@@ -1,4 +1,4 @@
-/* pages/sameVehicle/sameVehicle.wxss */
+/* pages/cityTravel/cityTravel.wxss */
 navbar{
     width: 100%;
 }
@@ -44,6 +44,28 @@ navbar{
     height:26rpx;
     padding: 0 26rpx 0;
 }
+.seaBox  .detail{
+    justify-content:left;
+}
+.numList{
+    width:82rpx;
+    height:58rpx;
+    line-height:58rpx;
+    margin: 0 11px 0 0;
+    padding: 0;
+    text-align: center;
+    font-size:32rpx;
+    background:rgba(255,255,255,1);
+    border:1rpx solid rgba(166,166,166,1);
+    border-radius:10rpx;
+}
+.numListSelect{
+    background:rgba(217,223,255,1);
+    border:1rpx solid rgba(8,110,224,1);
+    color:#086EE0;
+}
+
+
 .btnArea{
     clear: both;
     position: absolute;

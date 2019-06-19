@@ -1,0 +1,53 @@
+<!--pages/express/express.wxml-->
+<view class="container">
+    <navbar title="{{title}}"></navbar>
+    <form class="content" bindsubmit="formSubmit" bindreset="formReset">
+        <view class="listBox">
+            <text class="titleName">货物名称</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+            </view>
+        </view>
+        <view class="listBox"  bindchange="carTypeBtn">
+            <text class="titleName">重量</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+                <picker class="weight"  bindchange="carTypeBtn" value="{{index}}" range="{{itemList}}">
+                   {{itemList[index]}}
+                </picker>
+            </view>
+        </view>
+        <view class="listBox">
+            <text class="titleName">件数</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+            </view>
+        </view>
+        <view class="listBox seaBox">
+            <text class="titleName">付款方式</text>
+            <view class="detail">
+                <button class="numList {{ currentTab == index ? 'numListSelect' : '' }}"  
+                bindtap="{{ currentTab != index ? 'handleNumItem':'' }}" id="{{index}}"
+                wx:for="{{numList}}" wx:key="{{index}}">{{item}}</button>
+            </view>
+        </view>
+        <view class="listBox" bindchange="bindDateChange">
+            <text class="titleName">取货时间</text>
+            <view class="detail">
+                <picker class="inputDetail"  bindchange="bindDateChange" mode="date" value="{{date}}" start="2019-06-25" end="2020-09-01" > 
+                    {{date}}
+                </picker>
+            </view>
+        </view>
+        <view class="listBox detialListBox" bindchange="carTypeBtn">
+            <text class="titleName">备注</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+                <button class="detailList" bindtap="detailList">清单</button>
+            </view>
+        </view>
+        <view class="btnArea">
+            <button form-type="submit">提交</button>
+        </view>
+    </form>
+</view> 

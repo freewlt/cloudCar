@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/sameVehicle/sameVehicle",
+    "pages/express/express",
+    "pages/home/home",
     "pages/index/index",
     "pages/login/login",
-    "pages/home/home",
     "pages/generalize/generalize",
     "pages/sysMes/sysMes",
     "pages/personal/personal",
@@ -11,6 +11,9 @@
     "pages/nickName/nickName",
     "pages/changePassword/changePassword",
     "pages/changePhone/changePhone",
+    "pages/sameVehicle/sameVehicle",
+    "pages/cityTravel/cityTravel",
+    "pages/detailList/detailList",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",

@@ -1,4 +1,4 @@
-<!--pages/sameVehicle/sameVehicle.wxml-->
+<!--pages/cityTravel/cityTravel.wxml-->
 <view class="container">
     <navbar title="{{title}}"></navbar>
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
@@ -22,6 +22,14 @@
                 </picker>
             </view>
         </view>
+        <view class="listBox seaBox">
+            <text class="titleName">座位数</text>
+            <view class="detail">
+                <button class="numList {{ currentTab == index ? 'numListSelect' : '' }}"  
+                bindtap="{{ currentTab != index ? 'handleNumItem':'' }}" id="{{index}}"
+                wx:for="{{numList}}" wx:key="{{index}}">{{item}}</button>
+            </view>
+        </view>
         <view class="listBox" bindchange="carTypeBtn">
             <text class="titleName">用车类型</text>
             <view class="detail">
@@ -31,7 +39,6 @@
                 <image class="arrow" src="../../images/arrow.png"/>
             </view>
         </view>
-        <!-- 提交按钮 -->
         <view class="btnArea">
             <button form-type="submit">提交</button>
         </view>
