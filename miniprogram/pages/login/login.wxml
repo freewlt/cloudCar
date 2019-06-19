@@ -1,0 +1,33 @@
+<!--pages/login.wxml-->
+<view class="container">
+    <view class="logoBox">
+        <image src="{{logo}}"></image>
+    </view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class = "loginBox">
+            <view class="phoneBox">
+                <view class="iconBox">
+                    <image src='{{phonePic}}' class="iconPic"></image>
+                </view>
+                <input class="phoneInput" placeholder='手机号' placeholder-class="phcolor"></input>
+            </view>
+            <view class="codeBox">
+                <view class="iconBox">
+                    <image src='{{codePic}}' class="iconPic"></image>
+                </view>
+                <input class="codeInput" placeholder='验证码' placeholder-class="phcolor"></input>
+                <button class="getCode" bindtap="getCode">获取</button>
+            </view>
+        </view>
+        <view class="loginOptions">
+            <label class="forget">忘记密码？</label>
+            <label class="choose">
+                <checkbox class="check"/>
+                <text>用户协议</text> 
+            </label>
+        </view>
+        <view class="btnArea">
+            <button form-type="submit" bindtap="loginBtn">登录</button>
+        </view>
+    </form>
+</view>

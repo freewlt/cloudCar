@@ -1,0 +1,41 @@
+/* component/navbar.wxss */
+.navBg{
+    width: 100%;
+    background:#f2f2f2;
+}
+.navBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 94%;
+    height: 98rpx;
+    margin: 0 auto;
+}
+.navLf image{
+    display: inline-block;
+    vertical-align: middle;
+    width: 22rpx;
+    height: 37rpx;
+}
+.navLf text{
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 10rpx;
+    font-size:36rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:rgba(62,62,62,1);
+}
+.navCt text{
+    font-size:36rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:rgba(62,62,62,1);
+}
+.navRt text{
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:rgba(8,110,224,1);
+    
+}

@@ -1,0 +1,30 @@
+/* pages/generalize/generalize.wxss */
+navbar{
+    width: 100%;
+}
+.picBox {
+    width: 100%;
+}
+.picBox .wxAlipay{
+    width:366rpx;
+    height:423rpx;
+    margin: 50rpx auto 0;
+    background:#009944;
+    border-radius:10px;
+    text-align: center
+}
+.picBox .wxAlipay image{
+    width: 300rpx;
+    height: 304rpx;
+    padding: 30rpx 0 8rpx;
+}
+.picBox .wxAlipay text{
+    display: block;
+    font-size:36rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color: #fff;
+}
+.picBox .alipayBox{
+    background:#086EE0;
+}

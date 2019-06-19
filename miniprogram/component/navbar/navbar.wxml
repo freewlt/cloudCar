@@ -1,0 +1,15 @@
+<!--component/navbar.wxml-->
+  <view class="navBg">
+    <view class="navBox">
+        <view class="navLf" bindtap="backBtn">
+            <image class="backPic" src="{{backPic}}" />
+            <text>{{backTxt}}</text>
+        </view>
+        <view class="navCt">
+            <text>{{title}}</text>
+        </view>
+        <view class="navRt">
+            <text>{{messageNum}}</text>
+        </view>
+    </view>
+</view>

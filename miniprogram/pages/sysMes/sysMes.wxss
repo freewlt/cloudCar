@@ -1,0 +1,60 @@
+/* pages/sysMes/sysMes.wxss */
+navbar{
+    width: 100%;
+}
+
+
+.topTabSwiper{
+    width:100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    border-top: 1px solid #ccc;
+    border-bottom: 2px solid #E9E9E9;
+    zoom: 1;
+    color:rgba(166,166,166,1);
+    text-align: center;
+}
+.topTabSwiper:after{
+    content: ""; 
+    clear: both;
+    display: block;
+}
+.topTabSwiper .tab{
+    display: inline-block;
+    width: 45%;
+    height: 100%;
+    text-align: center;
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+ }
+.tabBorer{
+    border-bottom: 2px solid #086EE0;
+    color: #4188F1;
+}
+.swiper{
+    width: 100%;
+}
+.swiper_con{
+    text-align: center; 
+    width: 100%; 
+    height: 100%;
+}
+.messList{
+    display:flex;
+    justify-content:space-between;
+    width:90%;
+    height:96rpx;
+    line-height:96rpx;
+    margin:0 auto;
+    border-bottom:1px solid #e9e9e9;
+}
+.messList text{
+    font-size:26rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:#000;
+}
+.messList .time{
+    color:#6F6F6F;
+}
