@@ -16,7 +16,7 @@
                     <image src='{{codePic}}' class="iconPic"></image>
                 </view>
                 <input class="codeInput" placeholder='验证码' placeholder-class="phcolor"></input>
-                <button class="getCode" bindtap="getCode">获取</button>
+                <button class="getCode" bindtap="getVerificationCode" disabled='{{disabled}}' >{{codename}}</button>
             </view>
         </view>
         <view class="loginOptions">
@@ -27,7 +27,7 @@
             </label>
         </view>
         <view class="btnArea">
-            <button form-type="submit" bindtap="loginBtn">登录</button>
+            <button form-type="submit">登录</button>
         </view>
     </form>
 </view>

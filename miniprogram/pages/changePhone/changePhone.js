@@ -1,23 +1,22 @@
-// pages/login.js
-
+// pages/changePhone/changePhone.js
 const app = getApp();
 import util from '../../utils/util.js';
 import api from '../../utils/api.js';
 
 Page({
   data: {
-    logo:'../../images/logo.png',
-    phonePic:'../../images/phone.png',
-    codePic:'../../images/code.png',
+    title:'更换手机号',
+    phone:"1",
     code:'',
     iscode:null,
     codename:'获取'
    },
-  onLoad: function (options){
-      var that = this;
+  onLoad: function (){
    },
-
-  getCode:function(){
+   formSubmit:function(){
+   },
+   
+   getCode:function(){
     var a = this.data.phone;
     var _this = this;
     var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
@@ -91,13 +90,4 @@ Page({
       })
    },
 
-  //登录
-  formSubmit: function(e) {
-    wx.switchTab ({
-      url: '../home/home',
-    })
-  },
-  formReset: function() {
-    console.log('form发生了reset事件')
-  }
  })

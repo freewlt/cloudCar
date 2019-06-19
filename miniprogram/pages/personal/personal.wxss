@@ -1,0 +1,75 @@
+/* pages/personal/personal.wxss */
+.menuBox{
+    width:90%;
+    margin:0 auto;
+}
+.menuBox .list{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    width:100%;
+    height:140rpx;
+    border-bottom: 1rpx solid #E9E9E9;
+}
+.menuBox .list .pic{
+    padding: 0 26rpx 0;
+}
+.menuBox .list .pic:first-child{
+    width:40rpx;
+    height:40rpx;
+}
+.menuBox .list .pic:second-child{
+    width:35rpx;
+    height:41rpx;
+}
+.menuBox .list .pic:third-child{
+    width:39rpx;
+    height:39rpx;
+}
+.menuBox .list .pic:last-child{
+    width:36rpx;
+    height:38rpx;
+}
+.menuBox .list .txtBox{
+    flex-grow:2
+}
+.menuBox .list .txtBox text{
+    display:block;
+    width:100%;
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+}
+.menuBox .list .num{
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI-Bold;
+    font-weight:bold;    
+    color:#171717;
+}
+.menuBox .list .arrow{
+    width:15rpx;
+    height:26rpx;
+    padding: 0 26rpx 0;
+}
+.personBox .list{
+    height: 210rpx;
+}
+.personBox .list .pic{
+    width:128rpx!important;
+    height:128rpx!important;
+    padding: 0 26rpx 0;
+}
+.personBox .list .txtBox .title{
+    font-size:45rpx;
+    font-family:MicrosoftYaHeiUI-Bold;
+    font-weight:bold;
+    color:rgba(0,0,0,1);
+}
+.personBox .list .txtBox .slogn{
+    padding-top: 13rpx;
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:rgba(127,127,127,1);
+}

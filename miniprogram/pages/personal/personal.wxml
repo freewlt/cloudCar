@@ -1,0 +1,23 @@
+<!--pages/personal/personal.wxml-->
+<view class="container">
+    <view class="menuBox personBox" bindtap="personalData">
+        <view class="list">
+            <image class="pic" src="{{wxHead}}"/>
+            <view class="txtBox">
+                <text class="title">{{nickname}}</text>
+                <text class="slogn">{{detail}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="menuBox">
+        <navigator class="list" wx:for="{{list}}" wx:key="item.id" url="{{item.path}}">
+            <image class="pic" src="{{item.pic}}"/>
+            <view class="txtBox">
+                <text class="title">{{item.title}}</text>
+            </view>
+            <text class="num">{{item.num}}</text>
+            <image class="arrow" src="../../images/arrow.png"/>
+        </navigator>
+    </view>
+</view>
+

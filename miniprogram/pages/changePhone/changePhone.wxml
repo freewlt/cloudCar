@@ -1,0 +1,22 @@
+<!--pages/changePhone/changePhone.wxml-->
+<view class="container">
+    <navbar title="{{title}}" bindtap="backBtn"></navbar>
+    <form class="menuBox" bindsubmit="formSubmit" bindreset="formReset">
+        <view class="list">
+            <view class="txtBox">
+                <text class="title">更换手机号</text>
+            </view>
+            <input class="num" type="number"  value='{{phone}}'/>
+        </view>
+        <view class="list">
+            <view class="txtBox">
+                <text class="title">验证码</text>
+            </view>
+            <input class="num codeNum"  type="number"  value='{{code}}' maxlength="4"/>
+            <button class="getCode" bindtap="getVerificationCode" disabled='{{disabled}}' >{{codename}}</button>
+        </view>
+        <view class="btnArea">
+            <button form-type="submit">确认</button>
+        </view>
+    </form>
+</view> 

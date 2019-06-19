@@ -1,10 +1,16 @@
 {
   "pages": [
-    "pages/home/home",
+    "pages/sameVehicle/sameVehicle",
     "pages/index/index",
     "pages/login/login",
+    "pages/home/home",
     "pages/generalize/generalize",
     "pages/sysMes/sysMes",
+    "pages/personal/personal",
+    "pages/personalData/personalData",
+    "pages/nickName/nickName",
+    "pages/changePassword/changePassword",
+    "pages/changePhone/changePhone",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -20,5 +26,19 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  
+  "tabBar": {
+    "color":"#9B9B9B",
+    "selectedColor":"#086ee0",
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath":"./images/home.png",
+      "selectedIconPath":"./images/homeSelect.png"
+    }, {
+      "pagePath": "pages/personal/personal",
+      "text": "我的",
+      "iconPath":"./images/personal.png",
+      "selectedIconPath":"./images/personalSelect.png"
+    }]
+  }
 }

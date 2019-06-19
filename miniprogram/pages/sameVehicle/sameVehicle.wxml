@@ -1,0 +1,34 @@
+<!--pages/sameVehicle/sameVehicle.wxml-->
+<view class="container">
+    <navbar title="{{title}}"></navbar>
+    <view class="content">
+        <view class="listBox">
+            <text class="titleName">起始地</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+            </view>
+        </view>
+        <view class="listBox">
+            <text class="titleName">目的地</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+            </view>
+        </view>
+        <view class="listBox">
+            <text class="titleName">用车时间</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+            </view>
+        </view>
+        <view class="listBox">
+            <text class="titleName">用车时间</text>
+            <view class="detail">
+                <picker class="inputDetail"  bindchange="carTypeBtn" value="{{index}}" range="{{itemList}}">
+                   <view class="picker"> {{itemList[index]}}</view>
+                </picker>
+                <!-- <text class="inputDetail">厢式货车</text> -->
+                <image class="arrow" src="../../images/arrow.png"/>
+            </view>
+        </view>
+    </view>
+</view> 

@@ -1,0 +1,14 @@
+<!--pages/personalData/personalData.wxml-->
+<view class="container">
+    <navbar title="{{title}}"></navbar>
+    <view class="menuBox">
+        <navigator class="list" wx:for="{{list}}" wx:key="item.id" url="{{item.path}}">
+            <view class="txtBox">
+                <text class="title">{{item.title}}</text>
+            </view>
+            <text class="num">{{item.num}}</text>
+            <image class="arrow" src="../../images/arrow.png"/>
+        </navigator>
+    </view>
+</view> 
+

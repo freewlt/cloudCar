@@ -1,0 +1,12 @@
+<!--pages/nickName/nickName.wxml-->
+<view class="container">
+    <navbar title="{{title}}" bindtap="backBtn"></navbar>
+    <view class="menuBox">
+        <view class="list">
+            <view class="txtBox">
+                <text class="title">{{nickTitle}}</text>
+            </view>
+            <input class="num" type="text" placeholder="{{nickname}}" placeholder-class="phcolor"/>
+        </view>
+    </view>
+</view> 
