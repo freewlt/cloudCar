@@ -10,10 +10,10 @@ Page({
     index: 0, 
     tabTitleList:['全部订单','配送中','已派送','已接单','待支付','已撤销'],
     deliveryInfo:[
-      {time:'2019-5-24 17:36:35 ',orderNo:'234647558678786',dispatcher:'整车/拼车',starAddress:'北京市朝阳区建国路世通国际大厦E座',endAddress:'北京市昌平区首开智慧社1号楼3单元',handle:'配车中'},
-      {time:'2019-5-24 17:36:35 ',orderNo:'234647558678786',dispatcher:'整车/拼车',starAddress:'北京市朝阳区建国路世通国际大厦E座',endAddress:'北京市昌平区首开智慧社1号楼3单元',handle:'已派车'},
-      {time:'2019-5-24 17:36:35 ',orderNo:'234647558678786',dispatcher:'整车/拼车',starAddress:'北京市朝阳区建国路世通国际大厦E座',endAddress:'北京市昌平区首开智慧社1号楼3单元',handle:'已接单'},
-      {time:'2019-5-24 17:36:35 ',orderNo:'234647558678786',dispatcher:'整车/拼车',starAddress:'北京市朝阳区建国路世通国际大厦E座',endAddress:'北京市昌平区首开智慧社1号楼3单元',handle:'待支付'},
+      {time:'2019-5-24 17:36:35 ',orderNo:'234647558678786',dispatcher:'整车/拼车',starAddress:'北京市朝阳区建国路世通国际大厦E座',endAddress:'北京市昌平区首开智慧社1号楼3单元',handle:'配车中',path:'../orderReceive/orderReceive'},
+      {time:'2019-5-24 17:36:35 ',orderNo:'234647558678786',dispatcher:'整车/拼车',starAddress:'北京市朝阳区建国路世通国际大厦E座',endAddress:'北京市昌平区首开智慧社1号楼3单元',handle:'已派车',path:'../orderReceive/orderReceive'},
+      {time:'2019-5-24 17:36:35 ',orderNo:'234647558678786',dispatcher:'整车/拼车',starAddress:'北京市朝阳区建国路世通国际大厦E座',endAddress:'北京市昌平区首开智慧社1号楼3单元',handle:'已接单',path:'../orderReceive/orderReceive'},
+      {time:'2019-5-24 17:36:35 ',orderNo:'234647558678786',dispatcher:'整车/拼车',starAddress:'北京市朝阳区建国路世通国际大厦E座',endAddress:'北京市昌平区首开智慧社1号楼3单元',handle:'待支付',path:'../orderReceive/orderReceive'},
     ]
    },
   onLoad: function (){
@@ -39,10 +39,10 @@ Page({
       })
     }
   },
-  handleBtn:function(){
-    wx.navigateTo({
-      url:'../handle/handle'
-    })
-  }
+  // handleBtn:function(){
+  //   wx.navigateTo({
+  //     url:'../handle/handle'
+  //   })
+  // }
 
  })

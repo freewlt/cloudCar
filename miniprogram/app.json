@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/map/map",
+    "pages/orderReceive/orderReceive",
     "pages/index/index",
     "pages/login/login",
     "pages/home/home",
@@ -21,6 +21,7 @@
     "pages/balance/balance",
     "pages/orderRecord/orderRecord",
     "pages/handle/handle",
+    "pages/map/map",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",

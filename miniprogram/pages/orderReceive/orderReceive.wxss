@@ -62,6 +62,10 @@ map{
     color:rgba(0,0,0,1);  
     text-align: right;
 }
+.detailListBox{
+    
+    padding-top: 16rpx;
+}
 .addressBox .detail:nth-child(2){
     padding-top: 16rpx;
 }
@@ -106,13 +110,14 @@ map{
     justify-content: space-between;
 }
 .btnArea button{
-    width:324rpx;
+    width:192rpx;
     height:100rpx;
     background:rgba(8,110,224,1);
     border-radius:20rpx;
     color:#fff;
 }
 .btnArea .again{
-    background:#259F31;
+    width:268rpx;
+    background:#FF3D00;
 }
 

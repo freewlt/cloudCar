@@ -60,6 +60,7 @@ navbar{
     border-radius:10rpx;
     font-family:MicrosoftYaHeiUI;
 }
+
 .btnArea{
     clear: both;
     position: absolute;

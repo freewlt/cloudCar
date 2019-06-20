@@ -13,9 +13,9 @@
             </view>
         </view>
         <view class="listBox">
-            <view class="detail">
-                <text class="name">时间</text>
-                <text class="time">{{detail.time}}</text>
+            <view class="detail detailListBox" wx:for="{{detailList}}">
+                <text class="name">{{item.name}}</text>
+                <text class="time">{{item.list}}</text>
             </view>
         </view>
         <view class="listBox addressBox">
@@ -30,7 +30,8 @@
         </view>
         <view class="btnArea">
             <button class="detail">清单</button>
-            <button class="again">重新发布订单</button>
+            <button class="revoke">撤单</button>
+            <button class="again">待付款</button>
         </view></view>
     </view>
 </view> 

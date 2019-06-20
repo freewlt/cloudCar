@@ -9,7 +9,7 @@
     <swiper current="{{currentTab}}" class='swiper' duration="300" bindchange="bindchange">
         <swiper-item>
             <view class="swiper_con"> 
-                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" url="{{item.path}}">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
@@ -18,18 +18,18 @@
                             </view>
                             <view class="inputDetail txRt">
                                 <text class="time">{{item.time}}</text>
-                                <button class="handle" bindtap="handleBtn">{{item.handle}}</button>
+                                <button class="handle">{{item.handle}}</button>
                             </view>
                         </view>
                         <view class="address">起始地：<text>{{item.starAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </view>
+                </navigator>
             </view>
         </swiper-item> 
         <swiper-item>
             <view class="swiper_con"> 
-                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" url="{{item.path}}">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
@@ -38,18 +38,18 @@
                             </view>
                             <view class="inputDetail txRt">
                                 <text class="time">{{item.time}}</text>
-                                <button class="handle" bindtap="handleBtn">{{item.handle}}</button>
+                                <button class="handle">{{item.handle}}</button>
                             </view>
                         </view>
                         <view class="address">起始地：<text>{{item.starAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </view>
+                </navigator>
             </view>
         </swiper-item>
          <swiper-item>
             <view class="swiper_con"> 
-                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" url="{{item.path}}">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
@@ -58,18 +58,18 @@
                             </view>
                             <view class="inputDetail txRt">
                                 <text class="time">{{item.time}}</text>
-                                <button class="handle" bindtap="handleBtn">{{item.handle}}</button>
+                                <button class="handle">{{item.handle}}</button>
                             </view>
                         </view>
                         <view class="address">起始地：<text>{{item.starAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </view>
+                </navigator>
             </view>
         </swiper-item> 
         <swiper-item>
             <view class="swiper_con"> 
-                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" url="{{item.path}}">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
@@ -78,18 +78,18 @@
                             </view>
                             <view class="inputDetail txRt">
                                 <text class="time">{{item.time}}</text>
-                                <button class="handle" bindtap="handleBtn">{{item.handle}}</button>
+                                <button class="handle">{{item.handle}}</button>
                             </view>
                         </view>
                         <view class="address">起始地：<text>{{item.starAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </view>
+                </navigator>
             </view>
         </swiper-item> 
         <swiper-item>
             <view class="swiper_con"> 
-                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" url="{{item.path}}">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
@@ -98,18 +98,18 @@
                             </view>
                             <view class="inputDetail txRt">
                                 <text class="time">{{item.time}}</text>
-                                <button class="handle" bindtap="handleBtn">{{item.handle}}</button>
+                                <button class="handle">{{item.handle}}</button>
                             </view>
                         </view>
                         <view class="address">起始地：<text>{{item.starAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </view>
+                </navigator>
             </view>
         </swiper-item> 
         <swiper-item>
             <view class="swiper_con"> 
-                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
@@ -124,7 +124,7 @@
                         <view class="address">起始地：<text>{{item.starAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </view>
+                </navigator>
             </view>
         </swiper-item> 
     </swiper>

@@ -5,12 +5,19 @@ import api from '../../utils/api.js';
 
 Page({
   data: {
-    title:'同城整车', 
+    title:'已接单', 
     markers: [{
       iconPath: "../../images/startBig.png",
       id: 0,
       latitude: 23.099994,
       longitude: 113.324520,
+      width: 40,
+      height: 50
+    },{
+      iconPath: "../../images/endBig.png",
+      id: 0,
+      latitude: 20.099994,
+      longitude: 110.324520,
       width: 40,
       height: 50
     }],
@@ -31,6 +38,12 @@ Page({
       price:"30",
       time:'2019-05-22 16:20:20'
     },
+    detailList:[
+      {name:"张三",list:'15844147822'},
+      {name:"车辆信息",list:'冀F09W45 现代瑞纳'},
+      {name:"发货寄件",list:'20'},
+      {name:"时间",list:'2019-05-22 16:20:20'},
+    ],
     isShow: true,
     startAddress:'北京市昌平区涌鑫家园',
     endAddress:'北京市西二旗',
