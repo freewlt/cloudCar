@@ -1,0 +1,38 @@
+<!--pages/balance/balance.wxml-->
+<view class="container">
+    <!-- 导航 -->
+    <view class="navBg">
+       <view class="navBox">
+            <view class="navLf" bindtap="backBtn">
+                <image class="backPic" src="{{backPic}}" />
+                <text>{{backTxt}}</text>
+            </view>
+            <view class="navCt">
+                <text>{{title}}</text>
+            </view>
+            <view class="navRt" bindtap="rechargeBtn">
+                <text>{{messageNum}}</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="content">
+        <!-- 主体 -->
+        <text class="balance">{{balance}}</text>
+        <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+            <view class="listBox">
+                <view class="detail">
+                    <view class="inputDetail">
+                        <text class="name">{{item.time}}</text>
+                        <text class="phone">{{item.price}}</text>
+                    </view>
+                    <view class="inputDetail txRt">
+                        <text class="name">订单号：{{item.orderNo}}</text>
+                        <text class="phone">付款人：{{item.username}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view> 
+

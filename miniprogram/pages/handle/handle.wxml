@@ -1,0 +1,43 @@
+<!--pages/sysMes/sysMes.wxml-->
+<view class="container">
+    <navbar title="{{title}}"></navbar>
+        <view class="content">
+            <!-- 主体 -->
+            <view class="veliBox">
+                <view class="listBox addressBox">
+                    <view class="detail">
+                            <text class="bulk">{{startAddress}}</text>
+                            <image class="arrive" src="../../images/arrive.png"/>
+                            <text class="bulk">{{endAddress}}</text>
+                            <button class="menuBtn" bindtap="menuBtn" >菜单</button>
+                    </view>
+                </view>
+            </view>
+            <view class="notice">
+                <image class="arrive" src="../../images/end.png"/>
+                <text class="bulk">{{notice}}</text>
+            </view>
+            <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+                <view class="listBox">
+                    <view class="detail">
+                        <view class="inputDetail">
+                            <text class="name">{{item.username}}</text>
+                            <text class="num">{{item.weight}}</text>
+                            <text class="bulk">载重</text>
+                        </view>
+                        <view class="inputDetail txCt">
+                            <text class="name">{{item.seat}}</text>
+                            <text class="num">{{item.weightCar}}</text>
+                            <text class="bulk">载重</text>
+                        </view>
+                        <view class="inputDetail txCt">
+                            <text class="name">已成{{item.num}}单</text>
+                            <text class="num">{{item.bulk}}</text>
+                            <text class="bulk">体积（方）</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+</view> 
+

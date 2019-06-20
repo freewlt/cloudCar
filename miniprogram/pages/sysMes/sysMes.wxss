@@ -19,14 +19,19 @@ navbar{
     clear: both;
     display: block;
 }
-.topTabSwiper .tab{
-    display: inline-block;
-    width: 45%;
+.topTabSwiper .tabBox{
+    display: flex;
+    justify-content: space-between;
+    width:96%;
+    margin:0 auto;
     height: 100%;
     text-align: center;
     font-size:32rpx;
     font-family:MicrosoftYaHeiUI;
     font-weight:400;
+ }
+ .topTabSwiper .tabBox .tab{
+    width:50%;
  }
 .tabBorer{
     border-bottom: 2px solid #086EE0;

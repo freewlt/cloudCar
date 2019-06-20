@@ -1,0 +1,41 @@
+<!--pages/addressList/addressList.wxml-->
+
+<view class="container">
+    <!-- 导航 -->
+    <view class="navBg">
+       <view class="navBox">
+            <view class="navLf" bindtap="backBtn">
+                <image class="backPic" src="{{backPic}}" />
+                <text>{{backTxt}}</text>
+            </view>
+            <view class="navCt">
+                <text>{{title}}</text>
+            </view>
+            <view class="navRt" bindtap="deleteBtn">
+                <text>{{deleteNum}}</text>
+            </view>
+        </view>
+    </view>
+    <form class="content" bindsubmit="formSubmit" bindreset="formReset">
+        <!-- 主体 -->
+       <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" bindtap="deliveryInfo" id="{{index}}">
+            <view class="listBox deliveryInfoBox">
+                <view class="detail">
+                    <view class="chose {{ currentTab == index ? 'choseSel' : '' }}"  ></view>
+                    <view class="inputDetail">
+                        <view class="detailTop">
+                            <text class="name">{{item.name}}</text>
+                            <text class="phone">{{item.phone}}</text>
+                        </view>
+                        <text class="address">{{item.address}}</text>
+                    </view>
+                    <text class="edit" bindtap="editBtn">编辑</text>
+                </view>
+            </view>
+        </view>
+        <!-- 增加按钮 -->
+        <view class="btnArea">
+            <button form-type="submit">增加</button>
+        </view>
+    </form>
+</view>

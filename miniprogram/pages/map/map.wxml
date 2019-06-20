@@ -1,0 +1,30 @@
+<!--pages/map/map.wxml-->
+<view class="container">
+    <navbar title="{{title}}"></navbar>
+    <!-- 地图 -->
+    <map id="map" longitude="113.324520" latitude="23.099994" scale="14"  bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location></map>
+    <view  class="content">
+        <view class="listBox">
+            <view class="detail">
+                <text class="name">{{detail.name}}</text>
+                <text class="price">{{detail.price}}</text>
+            </view>
+        </view>
+        <view class="listBox">
+            <view class="detail">
+                <text class="name">时间</text>
+                <text class="time">{{detail.time}}</text>
+            </view>
+        </view>
+        <view class="listBox">
+            <view class="detail">
+                <image class="addressPic" src="../../images/start.png"/>
+                <text class="bulk">{{endAddress}}</text>
+                <image class="addressPic" src="../../images/end.png"/>
+                <text class="bulk">{{endAddress}}</text>
+            </view>
+        </view>
+    </view>
+</view> 
+
+

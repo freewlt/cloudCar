@@ -7,12 +7,15 @@ Page({
   data: {
     title:'同城速运',
     itemList: ['kg', 'g', 't'],
-    index:0,
     date: '2019-06-25',
     time:'',
     currentTab: 0,
     index: 0, 
-    numList:['现结','到付','月结']
+    numList:['现结','到付','月结'],
+    deliveryInfo:[
+      {detailName:'发货人信息',name:'张三',phone:'15811428566',address:"北京市恒大御景湾"},
+      {detailName:'收货人信息',name:'李四',phone:'15811428566',address:"北京市恒大御景湾"},
+    ]
    },
   onLoad: function (options){
     var TIME = util.formatTime(new Date());
@@ -20,8 +23,14 @@ Page({
         time: TIME,
       });
    },
-  //选择车型
-  carTypeBtn: function (e) {
+  //  收货信息
+  deliveryInfo:function(){
+    wx.navigateTo({
+      url:'../addressList/addressList'
+    })
+  },
+  //选择重量
+  weightBtn: function (e) {
     this.setData({
         index: e.detail.value
     })
@@ -29,7 +38,6 @@ Page({
   // 选择时间
   bindDateChange:function(e){
     if(this.data.time<e.detail.value){
-
       this.setData({
         date: e.detail.value
       })

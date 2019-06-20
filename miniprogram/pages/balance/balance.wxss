@@ -1,4 +1,4 @@
-/* pages/detailList/detailList.wxss */
+/* pages/balance/balance.wxss */
 .navBg{
     width: 100%;
     background:#f2f2f2;
@@ -42,20 +42,25 @@
 .content{
     width:100%;
 }
+.balance{
+    display: block;
+    width: 94%;
+    height: 140rpx;
+    line-height: 140rpx;
+    margin-left:6%;
+    border-bottom:2rpx solid rgba(233,233,233,1);
+    font-size:42rpx;
+    font-family:MicrosoftYaHeiUI-Bold;
+    font-weight:bold;
+    color:rgba(255,61,0,1);
+    text-align: center;
+}
 .listBox{
     clear: both;
     width: 94%;
     margin-left:6%;
     padding:20rpx 0;
     border-bottom:2rpx solid rgba(233,233,233,1);
-}
-.listBox .titleName{
-    display: block;
-    width: 100%;
-    font-size:26rpx;
-    font-family:MicrosoftYaHeiUI-Bold;
-    font-weight:bold;
-    color:rgba(0,0,0,1);
 }
 .listBox .inputDetail{
     width: 100%;
@@ -68,27 +73,25 @@
     display:flex;
     justify-content:space-around;
     align-items:center;
-}
-.listBox  .detail .arrow{
-    width:15rpx;
-    height:26rpx;
-    padding: 0  26rpx 0;
+    padding-right: 3%;
 }
 
-.deliveryInfoBox .detailTop{
-    display: flex;
-    justify-content:space-between;
-
-}
-.deliveryInfoBox .detailTop text{
-    width:50%;
+.listBox text{
+    display:block;
+    width:100%;
     text-align: left;
-}
-.deliveryInfoBox .inputDetail text{
-    display: block;
-    padding-top: 10rpx;
     font-size:26rpx;
     font-family:MicrosoftYaHeiUI;
     font-weight:400;
-    color:rgba(110,110,110,1);
+    color:rgba(111,111,111,1);
+}
+.listBox .inputDetail .phone{
+    padding-top: 20rpx;
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI-Bold;
+    font-weight:bold;
+    color:rgba(44,44,44,1);
+}
+.listBox .txRt text{
+   text-align: right;
 }

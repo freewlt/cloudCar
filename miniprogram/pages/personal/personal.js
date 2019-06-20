@@ -9,8 +9,8 @@ Page({
     nickname:'哈利备用',
     detail:'15844551488',
     list:[
-      {title:'账户余额',num:'500.00',pic:'../../images/money.png',path:'../nickName/nickName'},
-      {title:'订单记录',num:'100',pic:'../../images/order.png',path:''},
+      {title:'账户余额',num:'500.00',pic:'../../images/money.png',path:'../balance/balance'},
+      {title:'订单记录',num:'100',pic:'../../images/order.png',path:'../orderRecord/orderRecord'},
       {title:'推广二维码',pic:'../../images/WX.png',path:'../generalize/generalize'},
       {title:'一键客服',pic:'../../images/personService.png',path:''},
     ]

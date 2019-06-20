@@ -6,7 +6,9 @@ import api from '../../utils/api.js';
 Page({
   data: {
     title:'系统消息',
-    currentData : 0,
+    currentTab: 0,
+    index: 0, 
+    tabTitleList:['已读','未读'],
     messList:[
       {message:'支付成功',time:'2019-5-24 17:36:35'},
       {message:'支付成功',time:'2019-5-24 17:36:35'},
@@ -24,13 +26,13 @@ Page({
   },
   //点击切换，滑块index赋值
   checkCurrent:function(e){
-    const that = this;
-
-    if (that.data.currentData === e.target.dataset.current){
+    var that = this;
+    this.setData({
+      currentTab: e.currentTarget.id,
+    })
+    if (that.data.currentTab === e.target.dataset.current){
         return false;
-
     }else{
-
       that.setData({
         currentData: e.target.dataset.current
       })

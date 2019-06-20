@@ -7,7 +7,6 @@ Page({
   data: {
     title:'同城整车',
     itemList: ['顺风车', '专车', '私家车', '出租车'],
-    index:0,
     date: '2019-06-25',
     time:'',
     currentTab: 0,

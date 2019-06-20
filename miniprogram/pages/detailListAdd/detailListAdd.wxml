@@ -1,0 +1,49 @@
+<!--pages/detailListAdd/detailListAdd.wxml-->
+<view class="container">
+    <form class="content" bindsubmit="formSubmit" bindreset="formReset">
+        <view class="listBox detialListBox" bindchange="carTypeBtn">
+            <text class="titleName">产品名称</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+                <button class="detailList" bindtap="detailList">选择</button>
+            </view>
+        </view>
+        <view class="listBox">
+            <text class="titleName">产品编号</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+            </view>
+        </view>
+        <view class="listBox"  bindchange="weightBtn">
+            <text class="titleName">产品规格</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+                <picker class="weight"  bindchange="weightBtn" value="{{index}}" range="{{itemList}}">
+                   {{itemList[index]}}
+                </picker>
+            </view>
+        </view>
+        <view class="listBox">
+            <text class="titleName">产品单价</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+            </view>
+        </view>
+        <view class="listBox">
+            <text class="titleName">产品金额</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+            </view>
+        </view>
+        <view class="listBox">
+            <text class="titleName">产品备注</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+            </view>
+        </view>
+        <view class="btnArea">
+            <button form-type="submit">保存</button>
+        </view>
+    </form>
+</view> 
+

@@ -1,4 +1,4 @@
-/* pages/express/express.wxss */
+/* pages/detailListAdd/detailListAdd.wxss */
 navbar{
     width: 100%;
 }

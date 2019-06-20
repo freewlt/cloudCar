@@ -1,18 +1,34 @@
 <!--pages/express/express.wxml-->
 <view class="container">
-    <navbar title="{{title}}"></navbar>
+    <navbar title="{{title}}"   messageNum="{{messageNum}}"></navbar>
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
+       <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+            <text class="detailName">{{item.detailName}}</text>
+            <view class="listBox deliveryInfoBox" bindtap="deliveryInfo">
+                <view class="detail">
+                    <view class="inputDetail">
+                        <view class="detailTop">
+                            <text class="name">{{item.name}}</text>
+                            <text class="phone">{{item.phone}}</text>
+                        </view>
+                        <text class="address">{{item.address}}</text>
+                    </view>
+                    <image class="arrow" src="../../images/arrow.png"/>
+                </view>
+            </view>
+        </view>
+        <text class="detailName">货物信息</text>
         <view class="listBox">
             <text class="titleName">货物名称</text>
             <view class="detail">
                 <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
             </view>
         </view>
-        <view class="listBox"  bindchange="carTypeBtn">
+        <view class="listBox"  bindchange="weightBtn">
             <text class="titleName">重量</text>
             <view class="detail">
                 <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
-                <picker class="weight"  bindchange="carTypeBtn" value="{{index}}" range="{{itemList}}">
+                <picker class="weight"  bindchange="weightBtn" value="{{index}}" range="{{itemList}}">
                    {{itemList[index]}}
                 </picker>
             </view>
@@ -27,7 +43,7 @@
             <text class="titleName">付款方式</text>
             <view class="detail">
                 <button class="numList {{ currentTab == index ? 'numListSelect' : '' }}"  
-                bindtap="{{ currentTab != index ? 'handleNumItem':'' }}" id="{{index}}"
+                bindtap="handleNumItem" id="{{index}}"
                 wx:for="{{numList}}" wx:key="{{index}}">{{item}}</button>
             </view>
         </view>

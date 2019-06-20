@@ -1,0 +1,114 @@
+/* pages/sysMes/sysMes.wxss */
+navbar{
+    width: 100%;
+}
+
+.content{
+    width:100%;
+}
+.balance{
+    display: block;
+    width: 94%;
+    height: 140rpx;
+    line-height: 140rpx;
+    margin-left:6%;
+    border-bottom:2rpx solid rgba(233,233,233,1);
+    font-size:42rpx;
+    font-family:MicrosoftYaHeiUI-Bold;
+    font-weight:bold;
+    color:rgba(255,61,0,1);
+    text-align: center;
+}
+.listBox{
+    clear: both;
+    width: 94%;
+    margin-left:6%;
+    padding:20rpx 0;
+    border-bottom:2rpx solid rgba(233,233,233,1);
+}
+.listBox .inputDetail{
+    width: 100%;
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI-Bold;
+    font-weight:bold;
+    color:rgba(44,44,44,1);
+}
+.listBox .detail{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding-right: 3%;
+}
+
+.listBox text{
+    display:block;
+    width:100%;
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI-Bold;
+    font-weight:bold;
+    color:rgba(44,44,44,1);
+}
+.listBox .inputDetail .num{
+    padding-top: 10rpx;
+    font-size:26rpx;
+    font-family:MicrosoftYaHeiUI-Bold;
+    font-weight:bold;
+    color:rgba(111,111,111,1);
+}
+.listBox .inputDetail .bulk{
+    padding-top: 10rpx;
+    font-size:26rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:rgba(111,111,111,1);
+}
+.txCt{
+    text-align: center;
+}
+.addressBox{
+    border:none;
+}
+.addressBox text{
+    width:auto;
+}
+.arrive{
+    width:104rpx;
+    height:23rpx; 
+    padding: 0 10rpx;
+}
+.menuBtn{
+    width:145rpx;
+    height:60rpx;
+    line-height:60rpx;
+    padding:0;
+    background: none;
+    border:2rpx solid rgba(65,136,241,1);
+    font-size:32rpx;
+    font-weight:400;
+    color:rgba(8,110,224,1);
+    background:rgba(217,223,255,1);
+    border-radius:10rpx;
+    font-family:MicrosoftYaHeiUI;
+}
+.notice{
+    width:100%;
+    height:66rpx;
+    background:#fcffdf;
+    border-top:2rpx solid rgba(233,233,233,1);
+    border-bottom:2rpx solid rgba(233,233,233,1);
+}
+.notice image{
+    display:inline-block;
+    vertical-align: middle;
+    padding-left: 6%;
+    width:32rpx;
+    height:32rpx;
+}
+.notice text{
+    display:inline-block;
+    vertical-align: middle;
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:rgba(255,0,0,1);
+}
