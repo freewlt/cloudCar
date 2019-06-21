@@ -35,8 +35,8 @@
 .navRt text{
     font-size:36rpx;
     font-family:MicrosoftYaHeiUI;
-    font-weight:400;
-    color:rgba(62,62,62,1);
+    font-weight:bold;
+    color:rgba(8,110,224,1);
 }
 
 .content{
