@@ -1,7 +1,7 @@
 <!--pages/detailPerson/detailPerson.wxml-->
 <view class="container">
     <!-- 导航 -->
-    <navbar title="{{title}}" bindtap="backBtn"></navbar>
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
         <!-- 主体 -->
         <view class="listBox">

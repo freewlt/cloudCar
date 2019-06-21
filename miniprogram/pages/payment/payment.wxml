@@ -1,0 +1,42 @@
+<!--pages/map/map.wxml-->
+<view class="container">
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
+    <!-- 地图 -->
+    <map id="map" longitude="113.324520" latitude="23.099994" scale="14"  bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location></map>
+    <form  class="content" bindsubmit="formSubmit" bindreset="formReset">
+        <view class="trangerBox" bindtap="trangerBtn"><view class="tranger {{isShow ? '':'trangerTran'}}"></view></view>
+        <view class="listShow" wx:if="{{isShow}}">
+            <view class="listBox">
+                <view class="detail">
+                    <image class="pic" src="../../images/payment.png" />
+                    <text class="name">支付详情</text>
+                    <text class="price">{{detail.price}}</text>
+                    <image class="arrow" src="../../images/arrow.png" />
+                </view>
+            </view>
+            <view class="listBox payTypeBox">
+                <view class="detail detailListBox" wx:for="{{detailList}}" wx:key="item.path" id="{{index}}" bindtap="payTypeBtn">
+                    <view class="chose {{ currentTab == index ? 'choseSel' : '' }}"  ></view>
+                    <text class="name">{{item.name}}</text>
+                    <text class="time">{{item.price}}</text>
+                    <image class="arrow" src="" />
+                </view>
+            </view>
+            <view class="listBox addressBox">
+                <view class="detail">
+                    <image class="addressPic" src="../../images/start.png"/>
+                    <text class="addressTxt">{{startAddress}}</text>
+                </view>
+                <view class="detail">
+                    <image class="addressPic" src="../../images/end.png"/>
+                    <text class="addressTxt">{{endAddress}}</text>
+                </view>
+            </view>
+            <view class="btnArea">
+                <button class="again" form-type="submit">确定付款</button>
+            </view>
+        </view>
+    </form>
+</view> 
+
+

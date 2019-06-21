@@ -48,9 +48,10 @@ navbar{
     text-align: left
 }
 .getCode{
-    width:145rpx;
+    width:80rpx;
     height:60rpx;
     line-height:60rpx;
+    box-sizing: content-box;
     background: none;
     border:2rpx solid rgba(65,136,241,1);
     font-size:32rpx;

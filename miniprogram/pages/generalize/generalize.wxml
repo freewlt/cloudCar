@@ -1,6 +1,6 @@
 <!--pages/generalize/generalize.wxml-->
 <view class="container">
-    <navbar title="{{title}}"></navbar>
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <view class="picBox">
         <view class="wxAlipay wxBox">
             <image class="wx" src="{{wx}}" />

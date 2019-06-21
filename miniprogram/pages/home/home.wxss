@@ -36,7 +36,7 @@
 .navRt text{
     font-size:32rpx;
     font-family:MicrosoftYaHeiUI;
-    font-weight:400;
+    font-weight:bold;
     color:rgba(8,110,224,1);   
 }
 
@@ -66,7 +66,7 @@
     content: "";
     width:1rpx;
     height: 90%;
-    background: #808080;
+    border-right:1rpx dashed #888;
     position: absolute;
     top: 5%;
     left: 50%;
@@ -77,7 +77,7 @@
     text-align:center;
     font-size:42rpx;
     font-family:MicrosoftYaHeiUI;
-    font-weight:400;
+    font-weight:bold;
     color:#FE6A22;
 }
 .invenBox .inven .txt{
@@ -103,19 +103,19 @@
 .menuBox .list .pic{
     padding: 0 26rpx 0;
 }
-.menuBox .list .pic:first-child{
+.menuBox .list:first-child .pic{
     width:133rpx;
     height:94rpx;
 }
-.menuBox .list .pic:second-child{
+.menuBox .list:nth-child(2) .pic{
     width:146rpx;
     height:76rpx;
 }
-.menuBox .list .pic:third-child{
+.menuBox .list:nth-child(3) .pic{
     width:157rpx;
     height:80rpx;
 }
-.menuBox .list .pic:last-child{
+.menuBox .list:last-child .pic{
     width:118rpx;
     height:100rpx;
 }

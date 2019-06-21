@@ -11,6 +11,9 @@
     height: 98rpx;
     margin: 0 auto;
 }
+.navLf,.navCt,.navRt{
+    flex-grow: 1
+}
 .navLf image{
     display: inline-block;
     vertical-align: middle;

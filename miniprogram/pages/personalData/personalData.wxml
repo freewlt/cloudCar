@@ -1,6 +1,6 @@
 <!--pages/personalData/personalData.wxml-->
 <view class="container">
-    <navbar title="{{title}}"></navbar>
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <view class="menuBox">
         <navigator class="list" wx:for="{{list}}" wx:key="item.id" url="{{item.path}}">
             <view class="txtBox">

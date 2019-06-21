@@ -1,6 +1,6 @@
 <!--pages/changePhone/changePhone.wxml-->
 <view class="container">
-    <navbar title="{{title}}" bindtap="backBtn"></navbar>
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <form class="menuBox" bindsubmit="formSubmit" bindreset="formReset">
         <view class="list">
             <view class="txtBox">

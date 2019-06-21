@@ -1,6 +1,6 @@
 <!--pages/nickName/nickName.wxml-->
 <view class="container">
-    <navbar title="{{title}}" bindtap="backBtn"></navbar>
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <view class="menuBox">
         <view class="list">
             <view class="txtBox">

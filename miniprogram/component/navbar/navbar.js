@@ -15,14 +15,11 @@ const app = getApp();
     backPic:'../../images/back.png',
     backTxt:'返回',
   },
-  backBtn:function(){
-    let pages = getCurrentPages();
-   // 获取上一级页面，即pageA的page对象
-   let prevPage = pages[pages.length - 2];
-   let prevPageData = prevPage.data;
-   prevPage.onLoad();
-   wx.navigateBack({
-     delta: 1
-   })
+  methods: {
+    backBtn:function(){
+    var myEventDetail = {} // detail对象，提供给事件监听函数
+        var myEventOption = {} // 触发事件的选项
+        this.triggerEvent('myevent', myEventDetail, myEventOption)
+    }
   }
 })

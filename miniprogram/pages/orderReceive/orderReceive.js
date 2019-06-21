@@ -51,14 +51,35 @@ Page({
 
   onLoad: function (options){
    },
-
-   //订单
+  //返回按钮
+  onMyEvent: function(e){
+    let pages = getCurrentPages();
+   // 获取上一级页面，即pageA的page对象
+   let prevPage = pages[pages.length - 2];
+   let prevPageData = prevPage.data;
+   prevPage.onLoad();
+   wx.navigateBack({
+     delta: 1
+   })
+  },
+   //订单展开收起
    trangerBtn:function(){
-     console.log(this.data.isShow);
       this.setData({
         isShow : !this.data.isShow
       })
    },
+  //  清单
+  detailListBtn:function(){
+    wx.navigateTo({
+      url:'../handle/handle'
+    })
+  },
+  //  确定付款
+  paymentBtn:function(){
+    wx.navigateTo({
+      url:'../payment/payment'
+    })
+  },
    //地图
   regionchange(e) {
     console.log('0',e.type)

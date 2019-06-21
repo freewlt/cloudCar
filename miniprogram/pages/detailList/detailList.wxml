@@ -3,7 +3,7 @@
     <!-- 导航 -->
     <view class="navBg">
        <view class="navBox">
-            <view class="navLf" bindtap="backBtn">
+            <view class="navLf" bindtap="onMyEvent">
                 <image class="backPic" src="{{backPic}}" />
                 <text>{{backTxt}}</text>
             </view>

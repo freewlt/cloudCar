@@ -1,6 +1,6 @@
 <!--pages/sysMes/sysMes.wxml-->
 <view class="container">
-    <navbar title="{{title}}"></navbar>
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <view class='topTabSwiper'>
         <view class="tabBox">
             <view class='tab  {{currentTab == index ? "tabBorer" : ""}}'  wx:for="{{tabTitleList}}" id="{{index}}" wx:key="{{index}}" bindtap='checkCurrent'>{{item}}</view>

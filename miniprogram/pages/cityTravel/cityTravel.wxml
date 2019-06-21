@@ -1,6 +1,6 @@
 <!--pages/cityTravel/cityTravel.wxml-->
 <view class="container">
-    <navbar title="{{title}}"></navbar>
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
         <view class="listBox">
             <text class="titleName">起始地</text>

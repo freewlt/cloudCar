@@ -1,6 +1,6 @@
 <!--pages/sysMes/sysMes.wxml-->
 <view class="container">
-    <navbar title="{{title}}"></navbar>
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
         <view class="content">
             <!-- 主体 -->
             <view class="veliBox">

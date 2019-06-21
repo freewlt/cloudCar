@@ -12,34 +12,27 @@ map{
     height:calc(100% - 98rpx)
 }
 .content{
-    position: absolute;
+    /* position: absolute;
     bottom:0;
-    left:0;
+    left:0; */
     width:100%;
     background:#fff;
 }
 .listBox{
     clear: both;
-    width: 94%;
-    margin-left:6%;
+    width: 100%;
     padding:20rpx 0;
     border-bottom:2rpx solid rgba(233,233,233,1);
 }
-/* .listBox .inputDetail{
-    width: 100%;
-    font-size:32rpx;
-    font-family:MicrosoftYaHeiUI-Bold;
-    font-weight:bold;
-    color:rgba(44,44,44,1);
-} */
 .listShow{
     width:100%;
+    margin-top:-40rpx;
 }
 .listBox .detail{
     display:flex;
     justify-content:space-around;
     align-items:center;
-    padding-right: 3%;
+    padding: 0 5%;
 }
 .listBox text{
     display:block;
@@ -50,20 +43,17 @@ map{
     color:rgba(155,155,155,1);
 }
 .listBox .detail .price{
-    padding-right: 2%;
     font-size:42rpx;
     color:rgba(255,61,0,1);
     text-align: right;
 }
-.listBox .detail .time{   
-     padding-right: 2%;
+.listBox .detail .time{  
     font-size:32rpx;
     font-weight:bold;
     color:rgba(0,0,0,1);  
     text-align: right;
 }
-.detailListBox{
-    
+.listBox .detailListBox{
     padding-top: 16rpx;
 }
 .addressBox .detail:nth-child(2){
@@ -72,7 +62,7 @@ map{
 .addressBox .detail .addressPic{
     display: inline-block;
     vertical-align: middle;
-    width:38rpx;
+    width:42rpx;
     height:38rpx;
     padding-right:10rpx;
 }

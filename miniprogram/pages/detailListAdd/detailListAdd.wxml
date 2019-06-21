@@ -1,5 +1,6 @@
 <!--pages/detailListAdd/detailListAdd.wxml-->
 <view class="container">
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
         <view class="listBox detialListBox" bindchange="carTypeBtn">
             <text class="titleName">产品名称</text>
@@ -18,9 +19,7 @@
             <text class="titleName">产品规格</text>
             <view class="detail">
                 <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
-                <picker class="weight"  bindchange="weightBtn" value="{{index}}" range="{{itemList}}">
-                   {{itemList[index]}}
-                </picker>
+                <text class="weight">个</text>
             </view>
         </view>
         <view class="listBox">

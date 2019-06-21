@@ -19,13 +19,25 @@ Page({
         time: TIME,
       });
    },
+   
+  //返回
+  onMyEvent: function(e){
+    let pages = getCurrentPages();
+   //获取上一级页面，即pageA的page对象
+   let prevPage = pages[pages.length - 2];
+   let prevPageData = prevPage.data;
+   prevPage.onLoad();
+   wx.navigateBack({
+     delta: 1
+   })
+  },
   //选择车型
   carTypeBtn: function (e) {
     this.setData({
         index: e.detail.value
     })
   },
-  // 选择时间
+  //选择时间
   bindDateChange:function(e){
     if(this.data.time<e.detail.value){
 

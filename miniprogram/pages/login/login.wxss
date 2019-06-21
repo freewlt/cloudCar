@@ -80,7 +80,7 @@ page{
     vertical-align: middle;
     width:178rpx;
     height:62rpx;
-    line-height:62rpx;
+    line-height:58rpx;
     background: none;
     border:2rpx solid rgba(8,110,224,1);
     border-radius:5rpx;

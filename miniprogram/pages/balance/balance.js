@@ -15,7 +15,18 @@ Page({
       {time:'2019-5-24 17:36:35 ',orderNo:'234647558678786',price:'-30',username:'张三'},
     ]
    },
-  //  充值
+  //返回按钮
+  onMyEvent: function(e){
+    let pages = getCurrentPages();
+   //获取上一级页面，即pageA的page对象
+   let prevPage = pages[pages.length - 2];
+   let prevPageData = prevPage.data;
+   prevPage.onLoad();
+   wx.navigateBack({
+     delta: 1
+   })
+  },
+  //充值
   rechargeBtn:function(){
     wx.switchTab ({
       url:'../home/home'

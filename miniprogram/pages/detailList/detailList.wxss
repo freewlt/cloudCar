@@ -31,12 +31,14 @@
     font-family:MicrosoftYaHeiUI-Bold;
     font-weight:bold;
     color:rgba(0,0,0,1);
+    font-weight: bold
 }
 .navRt text{
     font-size:36rpx;
     font-family:MicrosoftYaHeiUI;
-    font-weight:400;
-    color:rgba(62,62,62,1);
+    color:rgba(0,0,0,1);
+    color:rgba(0,0,0,1);
+    font-weight: bold
 }
 
 .content{

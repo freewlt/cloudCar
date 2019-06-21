@@ -63,6 +63,7 @@ navbar{
     width:144rpx;
     height:58rpx;
     line-height:58rpx;
+    box-sizing:content-box;
     margin: 0 11px 0 0;
     padding: 0;
     text-align: center;
@@ -92,6 +93,7 @@ navbar{
     height:60rpx;
     padding:0;
     line-height:60rpx;
+    box-sizing:content-box;
     background:rgba(255,255,255,1);
     border:1rpx solid rgba(166,166,166,1);
     border-radius:10rpx;

@@ -18,15 +18,15 @@
     width:40rpx;
     height:40rpx;
 }
-.menuBox .list .pic:second-child{
+.menuBox .list:nth-child(2) .pic{
     width:35rpx;
     height:41rpx;
 }
-.menuBox .list .pic:third-child{
+.menuBox .list:nth-child(3) .pic{
     width:39rpx;
     height:39rpx;
 }
-.menuBox .list .pic:last-child{
+.menuBox .list:last-child .pic{
     width:36rpx;
     height:38rpx;
 }

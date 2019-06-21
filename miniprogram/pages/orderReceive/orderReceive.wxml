@@ -1,38 +1,39 @@
 <!--pages/map/map.wxml-->
 <view class="container">
-    <navbar title="{{title}}"></navbar>
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <!-- 地图 -->
     <map id="map" longitude="113.324520" latitude="23.099994" scale="14"  bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location></map>
     <view  class="content">
         <view class="trangerBox" bindtap="trangerBtn"><view class="tranger {{isShow ? '':'trangerTran'}}"></view></view>
         <view class="listShow" wx:if="{{isShow}}">
-        <view class="listBox">
-            <view class="detail">
-                <text class="name">{{detail.name}}</text>
-                <text class="price">{{detail.price}}</text>
+            <view class="listBox">
+                <view class="detail">
+                    <text class="name">{{detail.name}}</text>
+                    <text class="price">{{detail.price}}</text>
+                </view>
+            </view>
+            <view class="listBox">
+                <view class="detail detailListBox" wx:for="{{detailList}}" wx:key="item.id">
+                    <text class="name">{{item.name}}</text>
+                    <text class="time">{{item.list}}</text>
+                </view>
+            </view>
+            <view class="listBox addressBox">
+                <view class="detail">
+                    <image class="addressPic" src="../../images/start.png"/>
+                    <text class="addressTxt">{{startAddress}}</text>
+                </view>
+                <view class="detail">
+                    <image class="addressPic" src="../../images/end.png"/>
+                    <text class="addressTxt">{{endAddress}}</text>
+                </view>
+            </view>
+            <view class="btnArea">
+                <button class="detail" bindtap="detailListBtn">清单</button>
+                <button class="revoke">撤单</button>
+                <button class="again" bindtap="paymentBtn">待付款</button>
             </view>
         </view>
-        <view class="listBox">
-            <view class="detail detailListBox" wx:for="{{detailList}}">
-                <text class="name">{{item.name}}</text>
-                <text class="time">{{item.list}}</text>
-            </view>
-        </view>
-        <view class="listBox addressBox">
-            <view class="detail">
-                <image class="addressPic" src="../../images/start.png"/>
-                <text class="addressTxt">{{startAddress}}</text>
-            </view>
-            <view class="detail">
-                <image class="addressPic" src="../../images/end.png"/>
-                <text class="addressTxt">{{endAddress}}</text>
-            </view>
-        </view>
-        <view class="btnArea">
-            <button class="detail">清单</button>
-            <button class="revoke">撤单</button>
-            <button class="again">待付款</button>
-        </view></view>
     </view>
 </view> 
 

@@ -18,7 +18,6 @@ Page({
   onLoad: function (options){
       var that = this;
    },
-
    //个人资料
    personalData:function(){
       wx.navigateTo({

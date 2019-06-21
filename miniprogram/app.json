@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/orderReceive/orderReceive",
     "pages/index/index",
     "pages/login/login",
     "pages/home/home",
@@ -22,6 +21,10 @@
     "pages/orderRecord/orderRecord",
     "pages/handle/handle",
     "pages/map/map",
+    "pages/orderReceive/orderReceive",
+    "pages/paymentDetail/paymentDetail",
+    "pages/payment/payment",
+    "pages/comment/comment",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -44,7 +47,7 @@
       "pagePath": "pages/home/home",
       "text": "首页",
       "iconPath":"./images/home.png",
-      "selectedIconPath":"./images/homeSelect.png"
+      "selectedIconPath":"./images/homeSel.png"
     }, {
       "pagePath": "pages/personal/personal",
       "text": "我的",

@@ -51,6 +51,7 @@ navbar{
     width:82rpx;
     height:58rpx;
     line-height:58rpx;
+    box-sizing:content-box;
     margin: 0 11px 0 0;
     padding: 0;
     text-align: center;
