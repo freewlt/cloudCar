@@ -53,26 +53,27 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
+        // console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid;
+        app.globalData.appid=res.result.appid;
         wx.navigateTo({
-          url: '../userConsole/userConsole',
+          url: '../login/login',
         })
       },
       fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
+        //console.error('[云函数] [login] 调用失败', err)
         wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
+          url: '../index/index',
         })
       }
     })
   },
 
-  loginBtn: function (){
-    wx.navigateTo({
-      url: '../login/login?name='+ this.data.title,
-    })
-  },
+  // loginBtn: function (){
+  //   wx.navigateTo({
+  //     url: '../login/login?name='+ this.data.title,
+  //   })
+  // },
 
   // 上传图片
   doUpload: function () {

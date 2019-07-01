@@ -9,13 +9,13 @@
                 <view class="iconBox">
                     <image src='{{phonePic}}' class="iconPic"></image>
                 </view>
-                <input class="phoneInput" placeholder='手机号' placeholder-class="phcolor"></input>
+                <input class="phoneInput" placeholder='手机号' placeholder-class="phcolor" value='{{phone}}' bindinput='getPhoneValue'></input>
             </view>
             <view class="codeBox">
                 <view class="iconBox">
                     <image src='{{codePic}}' class="iconPic"></image>
                 </view>
-                <input class="codeInput" placeholder='验证码' placeholder-class="phcolor"></input>
+                <input class="codeInput" placeholder='验证码' placeholder-class="phcolor" value='{{code}}' bindinput='getCodeValue'></input>
                 <button class="getCode" bindtap="getVerificationCode" disabled='{{disabled}}' >{{codename}}</button>
             </view>
         </view>

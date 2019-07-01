@@ -40,5 +40,5 @@
     </navigator>
   </view>
 
-<button class="userinfo-nickname" bindtap="loginBtn">login</button>
+<button class="userinfo-nickname" bindtap="onGetOpenid">授权登录</button>
 </view>
