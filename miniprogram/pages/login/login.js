@@ -3,6 +3,7 @@
 const app = getApp();
 import util from '../../utils/util.js';
 import api from '../../utils/api.js';
+import utilMd5 from '../../utils/md5.js';
 
 Page({
   data: {
@@ -13,7 +14,7 @@ Page({
     iscode:null,
     codename:'获取',
     disabled:false,
-    phone:'',//手机号
+    phone:'13511074949',//手机号
     code:'',//验证码
    },
   onLoad: function (){
@@ -32,8 +33,9 @@ Page({
     })
   },
   getCode:function(){
+    var phone = this.data.phone;
+    var appid=app.globalData.appid
     var time = util.formatTime(new Date());
-    var appid = app.globalData.appid
     var _this = this;
     var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
     if (this.data.phone == "") {
@@ -52,14 +54,14 @@ Page({
       return false;
     }else{
       util.request(api.getphoneMsg,{
-        phone:this.data.phone,
+        phone:phone,
         phonetype:'14',
-        appid:app.globalData.appid,
+        appId:appid,
         timeStamp:time,
-        sign:'MD5'}
+        sign:utilMd5.hexMD5(phone+'14'+ appid+time)}
       ).then(function (res) {
         console.log(res)
-        if(res.count === 1){
+        if(res.resultCode == 1){
           var num = 61;
           var timer = setInterval(function () {
             num--;
@@ -77,10 +79,10 @@ Page({
             }
           }, 1000)
          _this.setData({
-          disabled:true
-        //   iscode: res.data.data
+          disabled:true,
+          iscode: res.token
          })
-        }else if(res.count ===0){
+        }else if(res.resultCode ==0){
           wx.showToast({
             title: '请求失败',
             icon: 'none',
@@ -100,9 +102,8 @@ Page({
 
   //登录
   formSubmit: function(e) {
-    util.request(api.loginPhonecode,{phone:this.data.phone,phontype:'14',appid:app.globalData.appid,timeStamp:''}).then(function (res) {
-    var appid = app.globalData.appid
-      if (res.errno === 0) {
+    util.request(api.loginPhonecode,{phone:this.data.phone,phontype:'14',appId:app.globalData.appid,timeStamp:''}).then(function (res) {
+      if (res.resultCode == 0) {
         console.log(0)
         var brand = res.data.brandList;
         that.setData({
@@ -148,9 +149,6 @@ Page({
         url: '../home/home',
       })
     }
-    // wx.switchTab ({
-    //   url: '../home/home',
-    // })
   },
   formReset: function() {
     console.log('form发生了reset事件')
