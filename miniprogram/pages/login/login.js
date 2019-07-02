@@ -12,6 +12,7 @@ Page({
     code:'',
     iscode:null,
     codename:'获取',
+    disabled:false,
     phone:'',//手机号
     code:'',//验证码
    },
@@ -32,6 +33,7 @@ Page({
   },
   getCode:function(){
     var time = util.formatTime(new Date());
+    var appid = app.globalData.appid
     var _this = this;
     var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
     if (this.data.phone == "") {
@@ -51,32 +53,42 @@ Page({
     }else{
       util.request(api.getphoneMsg,{
         phone:this.data.phone,
-        phonetype:'11',
+        phonetype:'14',
         appid:app.globalData.appid,
         timeStamp:time,
         sign:'MD5'}
       ).then(function (res) {
         console.log(res)
-        _this.setData({
-          iscode: res.data.data
-        })
-        var num = 61;
-        var timer = setInterval(function () {
-          num--;
-          if (num <= 0) {
-            clearInterval(timer);
-            _this.setData({
-              codename: '重新发送',
-              disabled: false
-            })
-
-          } else {
-            _this.setData({
-              codename: num + "s"
-            })
-          }
-        }, 1000)
+        if(res.count === 1){
+          var num = 61;
+          var timer = setInterval(function () {
+            num--;
+            if (num <= 0) {
+              clearInterval(timer);
+              _this.setData({
+                codename: '重新发送',
+                disabled: false
+              })
+  
+            } else {
+              _this.setData({
+                codename: num + "s"
+              })
+            }
+          }, 1000)
+         _this.setData({
+          disabled:true
+        //   iscode: res.data.data
+         })
+        }else if(res.count ===0){
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+            duration: 1000
+          })
+        }
         });
+        
     }
     
     
@@ -88,7 +100,7 @@ Page({
 
   //登录
   formSubmit: function(e) {
-    util.request(api.loginPhonecode,{phone:this.data.phone,phontype:'11',appid:app.globalData.appid,timeStamp:''}).then(function (res) {
+    util.request(api.loginPhonecode,{phone:this.data.phone,phontype:'14',appid:app.globalData.appid,timeStamp:''}).then(function (res) {
     var appid = app.globalData.appid
       if (res.errno === 0) {
         console.log(0)

@@ -1,5 +1,5 @@
 
-const API_BASE_URL = 'https://app.ycl56.com';
+const API_BASE_URL = 'http://app.ycl56.com';
 
 module.exports = {
     getphoneMsg: API_BASE_URL +':8080/emc/user/getphoneMsg',
