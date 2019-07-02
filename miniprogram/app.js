@@ -9,9 +9,8 @@ App({
         traceUser: true,
       })
     }
-
     this.globalData = {
-      
+      userInfo:null,
     }
   }
 })

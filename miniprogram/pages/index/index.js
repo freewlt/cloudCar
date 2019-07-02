@@ -5,6 +5,7 @@ Page({
   data: {
     avatarUrl: './user-unlogin.png',
     userInfo: {},
+    appid:'',
     logged: false,
     takeSession: false,
     requestResult: '',
@@ -28,7 +29,7 @@ Page({
             success: res => {
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
+                userInfo:res.userInfo,
               })
             }
           })
@@ -47,21 +48,17 @@ Page({
     }
   },
 
-  onGetOpenid: function() {
+  onGetOpenid: function(e) {
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',
       data: {},
       success: res => {
-        // console.log('[云函数] [login] user openid: ', res.result.openid)
+        console.log(res)
         app.globalData.openid = res.result.openid;
         app.globalData.appid=res.result.appid;
-        wx.navigateTo({
-          url: '../login/login',
-        })
       },
       fail: err => {
-        //console.error('[云函数] [login] 调用失败', err)
         wx.navigateTo({
           url: '../index/index',
         })
@@ -69,11 +66,13 @@ Page({
     })
   },
 
-  // loginBtn: function (){
-  //   wx.navigateTo({
-  //     url: '../login/login?name='+ this.data.title,
-  //   })
-  // },
+  loginBtn: function (){
+    app.globalData.userInfo=this.data.userInfo;
+    this.onGetOpenid();
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  },
 
   // 上传图片
   doUpload: function () {
