@@ -2,6 +2,7 @@
 const app = getApp();
 import util from '../../utils/util.js';
 import api from '../../utils/api.js';
+import utilMd5 from '../../utils/md5.js';
 
 Page({
   data: {
@@ -11,13 +12,133 @@ Page({
     backTxt:'返回',
     currentTab: 0,
     index: 0, 
-    deliveryInfo:[
-      {detailName:'发货人信息',name:'张三',phone:'15811428566',address:"北京市恒大御景湾"},
-      {detailName:'收货人信息',name:'李四',phone:'15811428566',address:"北京市恒大御景湾"},
-    ]
+    deliveryInfo:[],
+    dataId:''
    },
-  onLoad: function (){
+  onLoad: function (option){
+    var _this = this;
+    var TIME = util.formatTime(new Date());
+    var userDetail = wx.getStorageSync('userDetail')
+    var appid=app.globalData.appid;
+    var userId=userDetail.id;
+    var token=userDetail.token;
+    this.setData({
+      time: TIME,
+      dataId:option.id
+    });
+    console.log(_this.data.dataId,'_this.data.dataId')
+    console.log(option.id,'option.id')
+    util.request(api.getPiecesAddress,{
+      userId:userId,
+      appId:appid,
+      token:token,
+      timeStamp:TIME,
+      sign:utilMd5.hexMD5(token + appid + TIME),
+      state:'5',
+      pageIndex:'0',
+      pageSize:'12'
+    }).then(function (res) {
+      if (res.resultCode == 1) {
+        _this.setData({
+          deliveryInfo:res.list
+        })
+      }else{
+        wx.showToast({
+          title: res.result,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
    },
+   // 下拉刷新
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+    var _this = this;
+    var TIME = util.formatTime(new Date());
+    var userDetail = wx.getStorageSync('userDetail')
+    var appid=app.globalData.appid;
+    var userId=userDetail.id;
+    var token=userDetail.token;
+    this.setData({
+      time: TIME,
+    });
+    util.request(api.getPiecesAddress,{
+      userId:userId,
+      appId:appid,
+      token:token,
+      timeStamp:TIME,
+      sign:utilMd5.hexMD5(token + appid + TIME),
+      state:'5',
+      pageIndex:'0',
+      pageSize:'12'
+    }).then(function (res) {
+      if (res.resultCode == 1) {
+        _this.setData({
+          // itemList: res.list.map((it) => it.carType)
+          deliveryInfo:res.list
+        })
+        // 隐藏导航栏加载框
+        wx.hideNavigationBarLoading();
+        // 停止下拉动作
+        wx.stopPullDownRefresh();
+      }else{
+        wx.showToast({
+          title: res.result,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    page = page + 1;
+    var _this = this;
+    var TIME = util.formatTime(new Date());
+    var userDetail = wx.getStorageSync('userDetail')
+    var appid=app.globalData.appid;
+    var userId=userDetail.id;
+    var token=userDetail.token;
+    this.setData({
+      time: TIME,
+    });
+    util.request(api.getPiecesAddress + page,{
+      userId:userId,
+      appId:appid,
+      token:token,
+      timeStamp:TIME,
+      sign:utilMd5.hexMD5(token + appid + TIME),
+      state:'5',
+      pageIndex:'0',
+      pageSize:'12'
+    }).then(function (res) {
+      if (res.resultCode == 1) {
+        _this.setData({
+          // itemList: res.list.map((it) => it.carType)
+          deliveryInfo:res.list
+        })
+        // 隐藏加载框
+        wx.hideLoading();
+      }else{
+        wx.showToast({
+          title: res.result,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
+  },
+
   //返回按钮
   onMyEvent: function(e){
     let pages = getCurrentPages();
@@ -25,17 +146,42 @@ Page({
    let prevPage = pages[pages.length - 2];
    let prevPageData = prevPage.data;
    prevPage.onLoad();
+   prevPage.setData({
+      isRefresh: true
+   });
    wx.navigateBack({
      delta: 1
    })
   },
    //选择地址
   deliveryInfo:function(e){
-    var that = this;
-    that.setData({
+    var _this = this;
+    _this.setData({
       currentTab: e.currentTarget.id,
     })
-   },
+    if(_this.data.dataId == 0){
+      wx.setStorage({key:"concatDetail",data:{
+        linkMan:_this.data.deliveryInfo[e.currentTarget.id].linkMan,
+        linkPhone:_this.data.deliveryInfo[e.currentTarget.id].linkPhone,
+        descAddress:_this.data.deliveryInfo[e.currentTarget.id].descAddress}})
+    }else if(_this.data.dataId == 1){
+      wx.setStorage({key:"concatDetailShou",data:{
+        linkMan:_this.data.deliveryInfo[e.currentTarget.id].linkMan,
+        linkPhone:_this.data.deliveryInfo[e.currentTarget.id].linkPhone,
+        descAddress:_this.data.deliveryInfo[e.currentTarget.id].descAddress}})
+    }
+    let pages = getCurrentPages();
+    //获取上一级页面，即pageA的page对象
+    let prevPage = pages[pages.length - 2];
+    let prevPageData = prevPage.data;
+    prevPage.onLoad();
+    prevPage.setData({
+        isRefresh: true
+    });
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   //  删除
   deleteBtn:function(e){
     var current = e.currentTarget.dataset.index;

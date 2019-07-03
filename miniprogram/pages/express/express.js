@@ -12,16 +12,32 @@ Page({
     currentTab: 0,
     index: 0, 
     numList:['现结','到付','月结'],
-    deliveryInfo:[
-      {detailName:'发货人信息',name:'张三',phone:'15811428566',address:"北京市恒大御景湾"},
-      {detailName:'收货人信息',name:'李四',phone:'15811428566',address:"北京市恒大御景湾"},
-    ]
+    deliveryInfo:[],
+    deliveryInfoShou:[],
    },
   onLoad: function (options){
+    var _this = this;
     var TIME = util.formatTime(new Date());
-      this.setData({
-        time: TIME,
-      });
+    wx.getStorage({
+      key: 'concatDetail',
+      success: function(res) {
+        _this.setData({
+          deliveryInfo:res,
+        })
+      }
+    })
+    wx.getStorage({
+      key: 'concatDetailShou',
+      success: function(res) {
+        console.log(res)
+        _this.setData({
+          deliveryInfoShou:res,
+        })
+      }
+    })
+    this.setData({
+      time: TIME,
+    });
    },
    //返回按钮
   onMyEvent: function(e){
@@ -30,14 +46,22 @@ Page({
    let prevPage = pages[pages.length - 2];
    let prevPageData = prevPage.data;
    prevPage.onLoad();
+   prevPage.setData({
+      isRefresh: true
+   });
    wx.navigateBack({
      delta: 1
    })
   },
-  //  收货信息
+  // 收发货信息
   deliveryInfo:function(){
     wx.navigateTo({
-      url:'../addressList/addressList'
+      url:'../addressList/addressList?id=0'
+    })
+  },
+  deliveryInfoShou:function(){
+    wx.navigateTo({
+      url:'../addressList/addressList?id=1'
     })
   },
   //选择重量

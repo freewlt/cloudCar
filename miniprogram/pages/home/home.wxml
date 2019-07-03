@@ -24,11 +24,11 @@
     </swiper>
     <view class="invenBox">
         <view class="inven invenLf">
-            <text class="num">{{orderNum}}单</text>
+            <text class="num">{{orderNum}}   单</text>
             <text class="txt">订单数</text>
         </view>
         <view class="inven invenRt">
-            <text class="num">{{ticketNum}}张</text>
+            <text class="num">{{ticketNum}}   张</text>
             <text class="txt">优惠券</text>
         </view>
     </view>

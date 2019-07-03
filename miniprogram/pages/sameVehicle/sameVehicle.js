@@ -11,10 +11,34 @@ Page({
     date: '2019-06-25',
     time:''
    },
-  onLoad: function (options){
+  onLoad: function (){
+    var _this = this;
     var TIME = util.formatTime(new Date());
+    var userDetail = wx.getStorageSync('userDetail')
+    var appid=app.globalData.appid;
+    var userId=userDetail.id;
+    var token=userDetail.token;
       this.setData({
         time: TIME,
+      });
+      util.request(api.carTypeVehicleQuery,{
+        userId:userId,
+        appId:appid,
+        token:token,
+        vehicleType:2,
+      }).then(function (res) {
+        console.log(res)
+        if (res.resultCode == 1) {
+          _this.setData({
+            itemList: res.list.map((it) => it.carType)
+          })
+        }else{
+          wx.showToast({
+            title: res.result,
+            icon: 'none',
+            duration: 1000
+          })
+        }
       });
    },
   //返回按钮

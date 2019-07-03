@@ -6,19 +6,45 @@ import api from '../../utils/api.js';
 Page({
   data: {
     title:'同城整车',
-    itemList: ['顺风车', '专车', '私家车', '出租车'],
+    // itemList: ['顺风车', '专车', '私家车', '出租车'],
+    itemList: [],
     date: '2019-06-25',
     time:'',
     currentTab: 0,
     index: 0, 
-    numList:['01','02','03','04','05','06','07']
+    numList:['01','02','03','04','05','06','07'],
    },
-  onLoad: function (options){
+  onLoad: function (){
+    var _this = this;
     var TIME = util.formatTime(new Date());
+    var userDetail = wx.getStorageSync('userDetail')
+    var appid=app.globalData.appid;
+    var userId=userDetail.id;
+    var token=userDetail.token;
       this.setData({
         time: TIME,
       });
+      util.request(api.carTypeVehicleQuery,{
+        userId:userId,
+        appId:appid,
+        token:token,
+        vehicleType:1,
+      }).then(function (res) {
+        console.log(res)
+        if (res.resultCode == 1) {
+          _this.setData({
+            itemList: res.list.map((it) => it.carType)
+          })
+        }else{
+          wx.showToast({
+            title: res.result,
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      });
    },
+   
    
   //返回
   onMyEvent: function(e){

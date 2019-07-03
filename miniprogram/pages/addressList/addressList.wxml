@@ -24,10 +24,10 @@
                     <view class="chose {{ currentTab == index ? 'choseSel' : '' }}"  ></view>
                     <view class="inputDetail">
                         <view class="detailTop">
-                            <text class="name">{{item.name}}</text>
-                            <text class="phone">{{item.phone}}</text>
+                            <text class="name">{{item.linkMan}}</text>
+                            <text class="phone">{{item.linkPhone}}</text>
                         </view>
-                        <text class="address">{{item.address}}</text>
+                        <text class="address">{{item.descAddress}}</text>
                     </view>
                     <text class="edit" bindtap="editBtn">编辑</text>
                 </view>

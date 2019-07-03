@@ -16,6 +16,7 @@ Page({
     disabled:false,
     phone:'13511074949',//手机号
     code:'',//验证码
+    allValue:''
    },
   onLoad: function (){
   },
@@ -32,19 +33,19 @@ Page({
     })
   },
   getCode:function(){
-    var phone = this.data.phone;
-    var appid=app.globalData.appid;
-    var time = util.formatTime(new Date());
     var _this = this;
+    var phone = _this.data.phone;
+    var appid = app.globalData.appid;
+    var time = util.formatTime(new Date());
     var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
-    if (this.data.phone == "") {
+    if (_this.data.phone == "") {
       wx.showToast({
         title: '手机号不能为空',
         icon: 'none',
         duration: 1000
       })
       return false;
-    } else if (!myreg.test(this.data.phone)) {
+    } else if (!myreg.test(_this.data.phone)) {
       wx.showToast({
         title: '请输入正确的手机号',
         icon: 'none',
@@ -53,11 +54,11 @@ Page({
       return false;
     }else{
       util.request(api.getphoneMsg,{
-        phone:phone,
+        phone: phone,
         phonetype:'14',
-        appId:appid,
-        timeStamp:time,
-        sign:utilMd5.hexMD5(phone+'14'+ appid+time)}
+        appId: appid,
+        timeStamp: time,
+        sign: utilMd5.hexMD5(phone+'14'+ appid+time)}
       ).then(function (res) {
         console.log(res)
         if(res.resultCode == 1){
@@ -83,13 +84,12 @@ Page({
          })
         }else{
           wx.showToast({
-            title: '请求失败',
+            title: res.result,
             icon: 'none',
             duration: 1000
           })
         }
         });
-        
     }
     
     
@@ -100,68 +100,37 @@ Page({
    },
 
   //登录
-  formSubmit: function(e) {
-    var phonecode = this.data.code;
+  formSubmit: function() {
+    var _this = this;
+    var phonecode = _this.data.code;
     var appid=app.globalData.appid;
-    var userName = app.globalData.userInfo.nickName;
+    var userName = _this.data.phone;
     var time = util.formatTime(new Date());
-    console.log(appid)
     util.request(api.loginPhonecode,{
       phonecode:phonecode,
       userName:userName,
       appId:appid,
-      timeStamp:time,
-      sign:utilMd5.hexMD5(phonecode+userName+ appid+time),
     }).then(function (res) {
-      console.log(res)
+      wx.setStorage({key:"userDetail",data:{
+        id: res.id,
+        token: res.token,
+        companyPhone: res.companyPhone,}})
       if (res.resultCode == 1) {
-        var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
-        if(this.data.phone == ""){
-          wx.showToast({
-            title: '手机号不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }else if(!myreg.test(this.data.phone)){
-          wx.showToast({
-            title: '请输入正确的手机号',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(this.data.code == ""){
-          wx.showToast({
-            title: '验证码不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }else if(this.data.code != this.data.iscode){
-          wx.showToast({
-            title: '验证码错误',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }else{
-          wx.setStorageSync('phone', this.data.phone);
           wx.switchTab ({
             url: '../home/home',
           })
-        }
       }else{
         wx.showToast({
-          title: '登录失败',
+          title: res.result,
           icon: 'none',
           duration: 1000
         })
       }
     });
-    
   },
   formReset: function() {
-    console.log('form发生了reset事件')
+    this.setData({
+      allValue:''
+    })
   }
  })
