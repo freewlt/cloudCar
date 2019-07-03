@@ -3,7 +3,7 @@
     <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
        <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
-            <text class="detailName">发货人信息</text>
+            <text class="detailName">发货人信息{{datailName}}</text>
             <view class="listBox deliveryInfoBox" bindtap="deliveryInfo">
                 <view class="detail">
                     <view class="inputDetail">
