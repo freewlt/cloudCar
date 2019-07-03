@@ -2,31 +2,31 @@
 <view class="container">
     <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
-       <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+       <view class="veliBox">
             <text class="detailName">发货人信息{{datailName}}</text>
             <view class="listBox deliveryInfoBox" bindtap="deliveryInfo">
                 <view class="detail">
                     <view class="inputDetail">
                         <view class="detailTop">
-                            <text class="name">{{item.linkMan}}</text>
-                            <text class="phone">{{item.linkPhone}}</text>
+                            <text class="name">{{deliveryInfo.linkMan}}</text>
+                            <text class="phone">{{deliveryInfo.linkPhone}}</text>
                         </view>
-                        <text class="address">{{item.descAddress}}</text>
+                        <text class="address">{{deliveryInfo.descAddress}}</text>
                     </view>
                     <image class="arrow" src="../../images/arrow.png"/>
                 </view>
             </view>
         </view>
-       <view class="veliBox" wx:for="{{deliveryInfoShou}}" wx:key="item.id">
+       <view class="veliBox">
             <text class="detailName">收货人信息</text>
             <view class="listBox deliveryInfoBox" bindtap="deliveryInfoShou">
                 <view class="detail">
                     <view class="inputDetail">
                         <view class="detailTop">
-                            <text class="name">{{item.linkMan}}</text>
-                            <text class="phone">{{item.linkPhone}}</text>
+                            <text class="name">{{deliveryInfoShou.linkMan}}</text>
+                            <text class="phone">{{deliveryInfoShou.linkPhone}}</text>
                         </view>
-                        <text class="address">{{item.descAddress}}</text>
+                        <text class="address">{{deliveryInfoShou.descAddress}}</text>
                     </view>
                     <image class="arrow" src="../../images/arrow.png"/>
                 </view>

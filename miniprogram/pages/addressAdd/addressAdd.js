@@ -39,6 +39,9 @@ Page({
    let prevPage = pages[pages.length - 2];
    let prevPageData = prevPage.data;
    prevPage.onLoad();
+   prevPage.setData({
+      isRefresh: true
+   });
    wx.navigateBack({
      delta: 1
    })
@@ -77,12 +80,14 @@ Page({
     }).then(function (res) {
       console.log(res)
       if (res.resultCode == 1) {
-        _this.setData({
-          deliveryInfo:res.list
+        wx.showToast({
+          title: res.result,
+          icon: 'none',
+          duration: 1000
         })
-        // wx.navigateTo({
-        //   url:'../addressList/addressList'
-        // })
+        wx.navigateTo({
+          url:'../addressList/addressList'
+        })
       }else{
         wx.showToast({
           title: res.result,

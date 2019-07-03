@@ -111,6 +111,7 @@ Page({
       userName:userName,
       appId:appid,
     }).then(function (res) {
+      console.log(res)
       wx.setStorage({key:"userDetail",data:{
         id: res.id,
         token: res.token,

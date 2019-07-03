@@ -11,6 +11,22 @@
         </view>
     </view>
     <view class="menuBox">
+    <navigator class="list" url="../balance/balance">
+            <image class="pic" src="../../images/money.png"/>
+            <view class="txtBox">
+                <text class="title">账户余额</text>
+            </view>
+            <text class="num">{{balance}}</text>
+            <image class="arrow" src="../../images/arrow.png"/>
+        </navigator>
+        <navigator class="list" url="../orderRecord/orderRecord">
+            <image class="pic" src="../../images/order.png"/>
+            <view class="txtBox">
+                <text class="title">订单记录</text>
+            </view>
+            <text class="num">{{count}}</text>
+            <image class="arrow" src="../../images/arrow.png"/>
+        </navigator>
         <navigator class="list" wx:for="{{list}}" wx:key="item.id" url="{{item.path}}">
             <image class="pic" src="{{item.pic}}"/>
             <view class="txtBox">

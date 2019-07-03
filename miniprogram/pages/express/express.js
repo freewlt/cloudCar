@@ -12,26 +12,25 @@ Page({
     currentTab: 0,
     index: 0, 
     numList:['现结','到付','月结'],
-    deliveryInfo:[],
-    deliveryInfoShou:[],
+    deliveryInfo:{},
+    deliveryInfoShou:{}
    },
   onLoad: function (options){
     var _this = this;
     var TIME = util.formatTime(new Date());
     wx.getStorage({
-      key: 'concatDetail',
+      key: 'deliveryInfo',
       success: function(res) {
         _this.setData({
-          deliveryInfo:res,
+          deliveryInfo:res.data,
         })
       }
     })
     wx.getStorage({
-      key: 'concatDetailShou',
+      key: 'deliveryInfoShou',
       success: function(res) {
-        console.log(res)
         _this.setData({
-          deliveryInfoShou:res,
+          deliveryInfoShou:res.data,
         })
       }
     })
@@ -56,12 +55,12 @@ Page({
   // 收发货信息
   deliveryInfo:function(){
     wx.navigateTo({
-      url:'../addressList/addressList?id=0'
+      url:`../addressList/addressList?type=deliveryInfo&id=${this.data.deliveryInfo.id}`
     })
   },
   deliveryInfoShou:function(){
     wx.navigateTo({
-      url:'../addressList/addressList?id=1'
+      url:'../addressList/addressList?type=deliveryInfoShou&id=' + this.data.deliveryInfoShou.id,
     })
   },
   //选择重量

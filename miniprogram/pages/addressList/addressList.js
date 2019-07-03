@@ -13,7 +13,8 @@ Page({
     currentTab: 0,
     index: 0, 
     deliveryInfo:[],
-    dataId:''
+    dataId:'',
+    type: ''
    },
   onLoad: function (option){
     var _this = this;
@@ -24,10 +25,11 @@ Page({
     var token=userDetail.token;
     this.setData({
       time: TIME,
-      dataId:option.id
+      dataId: option.id,
+      currentTab: option.id,
+      type: option.type,
     });
-    console.log(_this.data.dataId,'_this.data.dataId')
-    console.log(option.id,'option.id')
+  
     util.request(api.getPiecesAddress,{
       userId:userId,
       appId:appid,
@@ -142,54 +144,82 @@ Page({
   //返回按钮
   onMyEvent: function(e){
     let pages = getCurrentPages();
-   //获取上一级页面，即pageA的page对象
-   let prevPage = pages[pages.length - 2];
-   let prevPageData = prevPage.data;
-   prevPage.onLoad();
-   prevPage.setData({
-      isRefresh: true
-   });
-   wx.navigateBack({
-     delta: 1
-   })
-  },
-   //选择地址
-  deliveryInfo:function(e){
-    var _this = this;
-    _this.setData({
-      currentTab: e.currentTarget.id,
-    })
-    if(_this.data.dataId == 0){
-      wx.setStorage({key:"concatDetail",data:{
-        linkMan:_this.data.deliveryInfo[e.currentTarget.id].linkMan,
-        linkPhone:_this.data.deliveryInfo[e.currentTarget.id].linkPhone,
-        descAddress:_this.data.deliveryInfo[e.currentTarget.id].descAddress}})
-    }else if(_this.data.dataId == 1){
-      wx.setStorage({key:"concatDetailShou",data:{
-        linkMan:_this.data.deliveryInfo[e.currentTarget.id].linkMan,
-        linkPhone:_this.data.deliveryInfo[e.currentTarget.id].linkPhone,
-        descAddress:_this.data.deliveryInfo[e.currentTarget.id].descAddress}})
-    }
-    let pages = getCurrentPages();
     //获取上一级页面，即pageA的page对象
     let prevPage = pages[pages.length - 2];
     let prevPageData = prevPage.data;
     prevPage.onLoad();
     prevPage.setData({
-        isRefresh: true
+      isRefresh: true
     });
     wx.navigateBack({
       delta: 1
     })
   },
+   //选择地址
+  deliveryInfo:function(e){
+    var _this = this;
+    const id = e.currentTarget.id;
+    _this.setData({
+      currentTab: e.currentTarget.id,
+    })
+    console.log(e); 
+    const data = _this.data.deliveryInfo.find((it) => it.id == id );
+    const key = _this.data.type;
+    console.log({data, key})
+    wx.setStorage({ key, data })
+    // if(_this.data.type == id){
+    //   wx.setStorage({ key:"concatDetail", data });
+    // }else if(_this.data.type == id){
+    //   wx.setStorage({ key:"concatDetailShou", data })
+    // }
+  },
   //  删除
   deleteBtn:function(e){
-    var current = e.currentTarget.dataset.index;
-    var list=this.data.deliveryInfo;
-    list.splice(current,1)
+    // var current = e.currentTarget.dataset.index;
+    // var list=this.data.deliveryInfo;
+    // list.splice(current,1)
+    // this.setData({
+    //   deliveryInfo: list
+    // })
+
+    var _this = this;
+    var TIME = util.formatTime(new Date());
+    var userDetail = wx.getStorageSync('userDetail')
+    var appid=app.globalData.appid;
+    var appid ='wx0b5fd5d4d5f1dd68';
+    var userId=userDetail.id;
+    var token=userDetail.token;
     this.setData({
-      deliveryInfo: list
-    })
+      time: TIME,
+    });
+    util.request(api.deleteMemberMarketInfo,{
+      userId:userId,
+      appId:appid,
+      token:token,
+      timeStamp:TIME,
+      Id:'',
+      sign:utilMd5.hexMD5(token + appid + TIME),
+    }).then(function (res) {
+      console.log(res)
+      if (res.resultCode == 1) {
+        _this.setData({
+          deliveryInfo:res.list
+        })
+        var current = e.currentTarget.dataset.index;
+        var list=res.list;
+        list.splice(current,1)
+        // 隐藏加载框
+        wx.hideLoading();
+      }else{
+        wx.showToast({
+          title: res.result,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
+
+
   },
   //  编辑
   editBtn: function() {

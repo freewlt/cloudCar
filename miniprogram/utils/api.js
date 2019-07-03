@@ -10,6 +10,6 @@ module.exports = {
     addPiecesAddress: API_BASE_URL +'/yclmini/miniProgram/Add_pieces_Address',
     getPiecesAddress: API_BASE_URL +'/yclmini/miniProgramUsdpieces/getpiecesAddress',
     deleteMemberMarketInfo: API_BASE_URL +'/yclmini/marketingInfo/deleteMemberMarketInfo',
-    updatePiecesAddress: API_BASE_URL +'/yclmini/miniProgram/update_pieces_Address',
+    queryGoodsCompanyInfo: API_BASE_URL +'/yclmini/miniprogram/queryGoodsCompanyInfo',
 
 };

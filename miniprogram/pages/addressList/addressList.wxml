@@ -18,10 +18,10 @@
     </view>
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
         <!-- 主体 -->
-       <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" bindtap="deliveryInfo" id="{{index}}">
+       <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" bindtap="deliveryInfo" id="{{item.id}}">
             <view class="listBox deliveryInfoBox">
                 <view class="detail">
-                    <view class="chose {{ currentTab == index ? 'choseSel' : '' }}"  ></view>
+                    <view class="chose {{ currentTab == item.id ? 'choseSel' : '' }}"  ></view>
                     <view class="inputDetail">
                         <view class="detailTop">
                             <text class="name">{{item.linkMan}}</text>
