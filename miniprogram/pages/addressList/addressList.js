@@ -13,7 +13,6 @@ Page({
     currentTab: 0,
     index: 0, 
     deliveryInfo:[],
-    dataId:'',
     type: ''
    },
   onLoad: function (option){
@@ -23,11 +22,11 @@ Page({
     var appid=app.globalData.appid;
     var userId=userDetail.id;
     var token=userDetail.token;
+    var expressPageData = wx.getStorageSync('expressPageData');
     this.setData({
       time: TIME,
-      dataId: option.id,
-      currentTab: option.id,
-      type: option.type,
+      currentTab: expressPageData.currentSelectedId || '',
+      expressPageData,
     });
   
     util.request(api.getPiecesAddress,{
@@ -164,14 +163,9 @@ Page({
     })
     console.log(e); 
     const data = _this.data.deliveryInfo.find((it) => it.id == id );
-    const key = _this.data.type;
+    const key = _this.data.expressPageData.selectedAddressType;
     console.log({data, key})
     wx.setStorage({ key, data })
-    // if(_this.data.type == id){
-    //   wx.setStorage({ key:"concatDetail", data });
-    // }else if(_this.data.type == id){
-    //   wx.setStorage({ key:"concatDetailShou", data })
-    // }
   },
   //  删除
   deleteBtn:function(e){
