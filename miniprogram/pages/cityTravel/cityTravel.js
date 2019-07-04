@@ -14,6 +14,15 @@ Page({
     currentTab: 0,
     index: 0, 
     numList:['01','02','03','04','05','06','07'],
+    goodsName:'',
+    dunWeight:'',
+    piece:'',
+    emergencycurrentTab:true,
+    emergency:'紧急',
+    emergencyState:0,
+    memo:'',
+    startAddress:'',
+    endAddress:''
    },
   onLoad: function (){
     var _this = this;
@@ -45,7 +54,43 @@ Page({
         }
       });
    },
-   
+   //获取input输入框的值
+  getstartAddressValue: function (e) {
+    this.setData({
+      startAddress: e.detail.value
+    })
+  },
+  getendAddressValue: function (e) {
+    this.setData({
+      endAddress: e.detail.value
+    })
+  },
+  // getPieceValue: function (e) {
+  //   this.setData({
+  //     piece: e.detail.value
+  //   })
+  // },
+  // getMemoValue: function (e) {
+  //   this.setData({
+  //     memo: e.detail.value
+  //   })
+  // },
+   emergencyBtn:function(e){
+    var _this = this;
+    if(_this.data.emergencycurrentTab == true){
+      _this.setData({
+        emergency: '不紧急',
+        emergencycurrentTab:!_this.data.emergencycurrentTab,
+        emergencyState:1
+      })
+    }else{
+      _this.setData({
+        emergency: '紧急',
+        emergencycurrentTab:!_this.data.emergencycurrentTab,
+        emergencyState:0
+      })
+    }
+  },
    
   //返回
   onMyEvent: function(e){
@@ -97,14 +142,14 @@ Page({
     var token=userDetail.token;
     var parentId=userDetail.parentId;
     var createUserId=userDetail.createUserId;
-    var linkMan = _this.data.deliveryInfo.linkMan;
-    var linkPhone = _this.data.deliveryInfo.linkPhone;
-    var startAddress = _this.data.deliveryInfo.descAddress;
-    var startlat = _this.data.deliveryInfo.lat;
-    var startlon = _this.data.deliveryInfo.lon;
-    var endLinkMan = _this.data.deliveryInfoShou.linkMan;
-    var endLinkPhone = _this.data.deliveryInfoShou.linkPhone;
-    var endAddress = _this.data.deliveryInfoShou.descAddress;
+    //var linkMan = _this.data.deliveryInfo.linkMan;
+    //var linkPhone = _this.data.deliveryInfo.linkPhone;
+    //var startAddress = _this.data.deliveryInfo.descAddress;
+    //var startlat = _this.data.deliveryInfo.lat;
+   // var startlon = _this.data.deliveryInfo.lon;
+    //var endLinkMan = _this.data.deliveryInfoShou.linkMan;
+    //var endLinkPhone = _this.data.deliveryInfoShou.linkPhone;
+    //var endAddress = _this.data.deliveryInfoShou.descAddress;
     var dunWeight = _this.data.dunWeight;
     var goodsName = _this.data.goodsName;
     var piece = _this.data.piece;
@@ -113,6 +158,7 @@ Page({
     this.setData({
       time: TIME,
     });
+    
     util.request(api.AddMenuGoodsOrder,{
       userId:userId,
       appId:appid,
@@ -120,15 +166,15 @@ Page({
       timeStamp:TIME,
       sign:utilMd5.hexMD5(token + appid + TIME),
       products:'',
-      productNu:'',
-      startAddress:startAddress,
-      linkMan:linkMan,
-      linkPhone:linkPhone,
-      startlat:startlat,
-      startlon:startlon,
-      endAddress:endAddress,
-      endLinkMan:endLinkMan,
-      endLinkPhone:endLinkPhone,
+      // productNu:'',
+      startAddress:'startAddress',
+      linkMan:'515',
+      linkPhone:'155',
+      startlat:'startlat',
+      startlon:'startlon',
+      endAddress:'endAddress',
+      endLinkMan:'endLinkMan',
+      endLinkPhone:'endLinkPhone',
       companyId:parentId,
       companyUserId:createUserId,
       dunWeight:dunWeight,
@@ -136,7 +182,7 @@ Page({
       // carTypeIds
       // useCarType
       // requestList
-      orderType:'3',
+      orderType:'1',
       amount:0,
       time:12,
       piece:piece,
@@ -153,70 +199,70 @@ Page({
           })
           return false;
         }
-        if(linkMan == ""){
-          wx.showToast({
-            title: '发货人不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(linkPhone == ""){
-          wx.showToast({
-            title: '发货人电话不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(endAddress == ""){
-          wx.showToast({
-            title: '终点地址不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(endLinkMan == ""){
-          wx.showToast({
-            title: '收货人不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(endLinkPhone == ""){
-          wx.showToast({
-            title: '收货人电话不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(dunWeight == ""){
-          wx.showToast({
-            title: '吨数不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(goodsName == ""){
-          wx.showToast({
-            title: '货物名称不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(piece == ""){
-          wx.showToast({
-            title: '件数不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }else{
+        // if(linkMan == ""){
+        //   wx.showToast({
+        //     title: '发货人不能为空',
+        //     icon: 'none',
+        //     duration: 1000
+        //   })
+        //   return false;
+        // }
+        // if(linkPhone == ""){
+        //   wx.showToast({
+        //     title: '发货人电话不能为空',
+        //     icon: 'none',
+        //     duration: 1000
+        //   })
+        //   return false;
+        // }
+        // if(endAddress == ""){
+        //   wx.showToast({
+        //     title: '终点地址不能为空',
+        //     icon: 'none',
+        //     duration: 1000
+        //   })
+        //   return false;
+        // }
+        // if(endLinkMan == ""){
+        //   wx.showToast({
+        //     title: '收货人不能为空',
+        //     icon: 'none',
+        //     duration: 1000
+        //   })
+        //   return false;
+        // }
+        // if(endLinkPhone == ""){
+        //   wx.showToast({
+        //     title: '收货人电话不能为空',
+        //     icon: 'none',
+        //     duration: 1000
+        //   })
+        //   return false;
+        // }
+        // if(dunWeight == ""){
+        //   wx.showToast({
+        //     title: '吨数不能为空',
+        //     icon: 'none',
+        //     duration: 1000
+        //   })
+        //   return false;
+        // }
+        // if(goodsName == ""){
+        //   wx.showToast({
+        //     title: '货物名称不能为空',
+        //     icon: 'none',
+        //     duration: 1000
+        //   })
+        //   return false;
+        // }
+        // if(piece == ""){
+        //   wx.showToast({
+        //     title: '件数不能为空',
+        //     icon: 'none',
+        //     duration: 1000
+        //   })
+        //   return false;}
+        else{
           wx.switchTab({
             url: '../home/home',
           })

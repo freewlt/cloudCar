@@ -69,13 +69,14 @@ navbar{
 
 .btnArea{
     clear: both;
-    position: absolute;
-    bottom: 10%;
-    left:5%;
     width: 90%;
+    margin: 80rpx auto;
+    display: flex;
+    justify-content: center;
 }
-.btnArea button{
-    width: 100%;
+.btnArea .submit{
+    /* width: 100%; */
+    width:50%;
     height:100rpx;
     background:rgba(8,110,224,1);
     border-radius:20rpx;
@@ -83,4 +84,17 @@ navbar{
     font-family:MicrosoftYaHeiUI;
     font-weight:400;
     color:rgba(255,255,255,1);
+}
+.emergencyState{
+    width:100px;
+    height:100rpx;
+    background:greenyellow;
+    border-radius:20rpx;
+    font-size:36rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+.emergencyStateRed{
+    background:red;
 }
