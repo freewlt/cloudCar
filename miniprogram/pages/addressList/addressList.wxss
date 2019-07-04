@@ -116,10 +116,11 @@
 
 .btnArea{
     clear: both;
-    position: absolute;
+    /* position: absolute;
     bottom: 10%;
-    left:5%;
+    left:5%; */
     width: 90%;
+    margin: 4% auto;
 }
 .btnArea button{
     width: 100%;

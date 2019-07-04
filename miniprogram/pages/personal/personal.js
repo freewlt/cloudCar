@@ -6,14 +6,12 @@ import utilMd5 from '../../utils/md5.js';
 
 Page({
   data: {
-    wxHead:"../../images/wxHead.png",
+    wxHead:'',
     nickname:'',
     detail:'',
     balance:'',
     count:'',
     list:[
-      // {title:'账户余额',num:'500.00',pic:'../../images/money.png',path:'../balance/balance'},
-      // {title:'订单记录',num:'100',pic:'../../images/order.png',path:'../orderRecord/orderRecord'},
       {title:'推广二维码',pic:'../../images/WX.png',path:'../generalize/generalize'},
       {title:'一键客服',pic:'../../images/personService.png',path:''},
     ]
@@ -28,6 +26,8 @@ Page({
     var token=userDetail.token;
     this.setData({
       time: TIME,
+      wxHead:app.globalData.avatarUrl,
+      nickname:app.globalData.nickName
     });
     util.request(api.queryGoodsCompanyInfo,{
       userId:userId,
@@ -36,11 +36,8 @@ Page({
       timeStamp:TIME,
       sign:utilMd5.hexMD5(token + appid + TIME),
     }).then(function (res) {
-      console.log(res)
       if (res.resultCode == 1) {
         _this.setData({
-          list:res,
-          nickname:res.linkMan,
           detail:res.linkPhone,
           balance:res.balance,
           count:res.count,

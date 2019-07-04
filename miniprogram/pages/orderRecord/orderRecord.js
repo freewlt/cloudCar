@@ -2,6 +2,7 @@
 const app = getApp();
 import util from '../../utils/util.js';
 import api from '../../utils/api.js';
+import utilMd5 from '../../utils/md5.js';
 
 Page({
   data: {
@@ -17,6 +18,39 @@ Page({
     ]
    },
   onLoad: function (){
+    var _this = this;
+    var TIME = util.formatTime(new Date());
+    var userDetail = wx.getStorageSync('userDetail');
+    var appid=app.globalData.appid;
+    var appid ='wx0b5fd5d4d5f1dd68';
+    var userId=userDetail.id;
+    var token=userDetail.token;
+    var pwsDetail = wx.getStorageSync('password');
+    this.setData({
+      time: TIME,
+    });
+    util.request(api.getMemberGoodsOrdersLogs,{
+      userId:userId,
+      appId:appid,
+      token:token,
+      orderstate:'',
+      goodsOrderId:'',
+      timeStamp:TIME,
+      sign:utilMd5.hexMD5(token + appid + TIME),
+    }).then(function (res) {
+      console.log(res)
+      if (res.resultCode == 1) {
+        _this.setData({
+        })
+        wx.hideLoading();
+      }else{
+        wx.showToast({
+          title: res.result,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
    },
   //返回按钮
   onMyEvent: function(e){

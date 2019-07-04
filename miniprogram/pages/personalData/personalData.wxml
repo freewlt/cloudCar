@@ -2,11 +2,32 @@
 <view class="container">
     <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <view class="menuBox">
-        <navigator class="list" wx:for="{{list}}" wx:key="item.id" url="{{item.path}}">
+        <navigator class="list" url="../nickName/nickName?index=1">
             <view class="txtBox">
-                <text class="title">{{item.title}}</text>
+                <text class="title">名称</text>
             </view>
-            <text class="num">{{item.num}}</text>
+            <text class="num">{{username}}</text>
+            <image class="arrow" src="../../images/arrow.png"/>
+        </navigator>
+        <navigator class="list" url="../changePassword/changePassword">
+            <view class="txtBox">
+                <text class="title">修改密码</text>
+            </view>
+            <text class="num">{{password}}</text>
+            <image class="arrow" src="../../images/arrow.png"/>
+        </navigator>
+        <navigator class="list" url="../nickName/nickName?index=2">
+            <view class="txtBox">
+                <text class="title">联系人</text>
+            </view>
+            <text class="num">{{linkMan}}</text>
+            <image class="arrow" src="../../images/arrow.png"/>
+        </navigator>
+        <navigator class="list" url="../changePhone/changePhone">
+            <view class="txtBox">
+                <text class="title">绑定手机号</text>
+            </view>
+            <text class="num">{{linkphone}}</text>
             <image class="arrow" src="../../images/arrow.png"/>
         </navigator>
     </view>

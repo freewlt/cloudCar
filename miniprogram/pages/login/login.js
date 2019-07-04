@@ -111,11 +111,11 @@ Page({
       userName:userName,
       appId:appid,
     }).then(function (res) {
-      console.log(res)
       wx.setStorage({key:"userDetail",data:{
         id: res.id,
         token: res.token,
-        companyPhone: res.companyPhone,}})
+        companyPhone: res.companyPhone,
+        companyName:res.companyName}})
       if (res.resultCode == 1) {
           wx.switchTab ({
             url: '../home/home',

@@ -6,14 +6,27 @@ import api from '../../utils/api.js';
 Page({
   data: {
     title:'资料',
-    list:[
-      {title:'名称',num:'哈里贝利',path:'../nickName/nickName?index=1'},
-      {title:'修改密码',num:'',path:'../changePassword/changePassword'},
-      {title:'联系人',num:'张先生',path:'../nickName/nickName?index=2'},
-      {title:'绑定手机号',num:'18611898100',path:'../changePhone/changePhone'},
-    ],
+    username:'',
+    password:'',
+    linkphone:'',
+    linkMan:'',
+    
    },
   onLoad: function (){
+    var _this = this;
+    wx.getStorage({
+      key: 'companyName',
+      success (res) {
+        _this.setData({
+          linkMan:res.data
+        })
+      }
+    })
+    var userDetail = wx.getStorageSync('userDetail')
+    _this.setData({
+      linkphone:userDetail.companyPhone,
+      username:app.globalData.nickName
+    })
    },
   //返回按钮
   onMyEvent: function(e){
@@ -22,6 +35,9 @@ Page({
    let prevPage = pages[pages.length - 2];
    let prevPageData = prevPage.data;
    prevPage.onLoad();
+   prevPage.setData({
+     isRefresh: true
+   });
    wx.navigateBack({
      delta: 1
    })

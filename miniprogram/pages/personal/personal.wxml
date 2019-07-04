@@ -11,7 +11,7 @@
         </view>
     </view>
     <view class="menuBox">
-    <navigator class="list" url="../balance/balance">
+        <navigator class="list" url="../balance/balance">
             <image class="pic" src="../../images/money.png"/>
             <view class="txtBox">
                 <text class="title">账户余额</text>

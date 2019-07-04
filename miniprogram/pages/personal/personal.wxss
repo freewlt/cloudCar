@@ -61,7 +61,7 @@
     padding: 0 26rpx 0;
 }
 .personBox .list .txtBox .title{
-    font-size:45rpx;
+    font-size:40rpx;
     font-family:MicrosoftYaHeiUI-Bold;
     font-weight:bold;
     color:rgba(0,0,0,1);

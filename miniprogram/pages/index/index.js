@@ -13,6 +13,7 @@ Page({
   },
 
   onLoad: function() {
+    var _this = this;
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
@@ -31,6 +32,8 @@ Page({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo:res.userInfo,
               })
+              app.globalData.avatarUrl =_this.data.avatarUrl;
+              app.globalData.nickName =_this.data.userInfo.nickName;
             }
           })
         }

@@ -15,43 +15,48 @@ Page({
     deliveryInfo:[],
     type: ''
    },
-  onLoad: function (option){
-    var _this = this;
-    var TIME = util.formatTime(new Date());
-    var userDetail = wx.getStorageSync('userDetail')
-    var appid=app.globalData.appid;
-    var userId=userDetail.id;
-    var token=userDetail.token;
-    var expressPageData = wx.getStorageSync('expressPageData');
-    this.setData({
-      time: TIME,
-      currentTab: expressPageData.currentSelectedId || '',
-      expressPageData,
-    });
-  
-    util.request(api.getPiecesAddress,{
-      userId:userId,
-      appId:appid,
-      token:token,
-      timeStamp:TIME,
-      sign:utilMd5.hexMD5(token + appid + TIME),
-      state:'5',
-      pageIndex:'0',
-      pageSize:'12'
-    }).then(function (res) {
-      if (res.resultCode == 1) {
-        _this.setData({
-          deliveryInfo:res.list
-        })
-      }else{
-        wx.showToast({
-          title: res.result,
-          icon: 'none',
-          duration: 1000
-        })
-      }
-    });
+  onLoad: function (){
+    this.onrequest();
    },
+  // 请求地址
+   onrequest:function(){
+      var _this = this;
+      var TIME = util.formatTime(new Date());
+      var userDetail = wx.getStorageSync('userDetail')
+      var appid=app.globalData.appid;
+      var userId=userDetail.id;
+      var token=userDetail.token;
+      var expressPageData = wx.getStorageSync('expressPageData');
+      this.setData({
+        time: TIME,
+        currentTab: expressPageData.currentSelectedId || '',
+        expressPageData,
+      });
+    
+      util.request(api.getPiecesAddress,{
+        userId:userId,
+        appId:appid,
+        token:token,
+        timeStamp:TIME,
+        sign:utilMd5.hexMD5(token + appid + TIME),
+        state:'5',
+        pageIndex:'0',
+        pageSize:'12'
+      }).then(function (res) {
+        if (res.resultCode == 1) {
+          _this.setData({
+            deliveryInfo:res.list
+          })
+        }else{
+          wx.showToast({
+            title: res.result,
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      });
+   },
+
    // 下拉刷新
   onPullDownRefresh: function () {
     // 显示顶部刷新图标
@@ -77,7 +82,6 @@ Page({
     }).then(function (res) {
       if (res.resultCode == 1) {
         _this.setData({
-          // itemList: res.list.map((it) => it.carType)
           deliveryInfo:res.list
         })
         // 隐藏导航栏加载框
@@ -103,6 +107,7 @@ Page({
       title: '玩命加载中',
     })
     // 页数+1
+    var page = 0;
     page = page + 1;
     var _this = this;
     var TIME = util.formatTime(new Date());
@@ -125,7 +130,6 @@ Page({
     }).then(function (res) {
       if (res.resultCode == 1) {
         _this.setData({
-          // itemList: res.list.map((it) => it.carType)
           deliveryInfo:res.list
         })
         // 隐藏加载框
@@ -161,22 +165,14 @@ Page({
     _this.setData({
       currentTab: e.currentTarget.id,
     })
-    console.log(e); 
     const data = _this.data.deliveryInfo.find((it) => it.id == id );
     const key = _this.data.expressPageData.selectedAddressType;
-    console.log({data, key})
     wx.setStorage({ key, data })
   },
   //  删除
   deleteBtn:function(e){
-    // var current = e.currentTarget.dataset.index;
-    // var list=this.data.deliveryInfo;
-    // list.splice(current,1)
-    // this.setData({
-    //   deliveryInfo: list
-    // })
-
     var _this = this;
+    const id = this.data.currentTab;
     var TIME = util.formatTime(new Date());
     var userDetail = wx.getStorageSync('userDetail')
     var appid=app.globalData.appid;
@@ -191,18 +187,12 @@ Page({
       appId:appid,
       token:token,
       timeStamp:TIME,
-      Id:'',
+      Id:id,
       sign:utilMd5.hexMD5(token + appid + TIME),
     }).then(function (res) {
-      console.log(res)
       if (res.resultCode == 1) {
-        _this.setData({
-          deliveryInfo:res.list
-        })
-        var current = e.currentTarget.dataset.index;
-        var list=res.list;
-        list.splice(current,1)
         // 隐藏加载框
+        _this.onrequest();
         wx.hideLoading();
       }else{
         wx.showToast({
@@ -217,8 +207,14 @@ Page({
   },
   //  编辑
   editBtn: function() {
+    var _this = this;
+    const id = this.data.currentTab;
+    const deliveryInfoNew = _this.data.deliveryInfo.find((it) => it.id == id );
+    var linkMan = deliveryInfoNew.linkMan;
+    var linkPhone = deliveryInfoNew.linkPhone;
+    var descAddress = deliveryInfoNew.descAddress;
     wx.navigateTo({
-      url:'../addressAdd/addressAdd'
+      url: `../addressAdd/addressAdd?linkMan=${linkMan}&linkPhone=${linkPhone}&descAddress=${descAddress}&index=0`
     })
   },
    //提交

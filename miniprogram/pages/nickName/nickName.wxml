@@ -6,7 +6,10 @@
             <view class="txtBox">
                 <text class="title">{{nickTitle}}</text>
             </view>
-            <input class="num" type="text" placeholder="{{nickname}}" placeholder-class="phcolor"/>
+            <input class="num" type="text" value='{{nickname}}' bindinput='getValue'/>
         </view>
+    </view>
+    <view class="btnArea">
+        <button bindtap="submitBtn">确认</button>
     </view>
 </view> 

@@ -13,7 +13,15 @@ Page({
     lat: '',
     lon: '',
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    var _this = this;
+    if(options.index==0){
+      _this.setData({
+        linkMan:options.linkMan,
+        linkPhone:options.linkPhone,
+        descAddress:options.descAddress
+      })
+    }
   },
 
   //获取input输入框的值
@@ -65,7 +73,6 @@ Page({
     var descAddress = _this.data.descAddress;
     var lat = _this.data.lat;
     var lon = _this.data.lon;
-    console.log(descAddress)
     util.request(api.addPiecesAddress, {
       userId: userId,
       appId: appid,
@@ -78,16 +85,59 @@ Page({
       lat: lat,
       lon: lon,
     }).then(function (res) {
-      console.log(res)
       if (res.resultCode == 1) {
-        wx.showToast({
-          title: res.result,
-          icon: 'none',
-          duration: 1000
-        })
-        wx.navigateTo({
-          url: '../addressList/addressList'
-        })
+        var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
+        if(linkPhone == ""){
+          wx.showToast({
+            title: '手机号不能为空',
+            icon: 'none',
+            duration: 1000
+          })
+          return false;
+        }else if(!myreg.test(linkPhone)){
+          wx.showToast({
+            title: '请输入正确的手机号',
+            icon: 'none',
+            duration: 1000
+          })
+          return false;
+        }
+        if(linkMan == ""){
+          wx.showToast({
+            title: '姓名不能为空',
+            icon: 'none',
+            duration: 1000
+          })
+          return false;
+        }
+        if(descAddress == ""){
+          wx.showToast({
+            title: '地址不能为空',
+            icon: 'none',
+            duration: 1000
+          })
+          return false;
+        }
+        if(lon == ""){
+          wx.showToast({
+            title: '纬度不能为空',
+            icon: 'none',
+            duration: 1000
+          })
+          return false;
+        }
+        if(lat == ""){
+          wx.showToast({
+            title: '经度不能为空',
+            icon: 'none',
+            duration: 1000
+          })
+          return false;
+        }else{
+          wx.navigateTo({
+            url: '../addressList/addressList'
+          })
+        }
       } else {
         wx.showToast({
           title: res.result,
@@ -96,8 +146,5 @@ Page({
         })
       }
     });
-    // wx.navigateTo({
-    //   url:'../addressList/addressList'
-    // })
   },
 })
