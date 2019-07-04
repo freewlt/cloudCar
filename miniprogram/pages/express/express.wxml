@@ -36,13 +36,13 @@
         <view class="listBox">
             <text class="titleName">货物名称</text>
             <view class="detail">
-                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{goodsName}}" bindinput='getNameValue'/>
             </view>
         </view>
         <view class="listBox"  bindchange="weightBtn">
             <text class="titleName">重量</text>
             <view class="detail">
-                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{dunWeight}}" bindinput='getDunValue'/>
                 <picker class="weight"  bindchange="weightBtn" value="{{index}}" range="{{itemList}}">
                    {{itemList[index]}}
                 </picker>
@@ -51,7 +51,7 @@
         <view class="listBox">
             <text class="titleName">件数</text>
             <view class="detail">
-                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{Piece}}" bindinput='getPieceValue'/>
             </view>
         </view>
         <view class="listBox seaBox">
@@ -73,12 +73,13 @@
         <view class="listBox detialListBox" bindchange="carTypeBtn">
             <text class="titleName">备注</text>
             <view class="detail">
-                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor"/>
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{memo}}" bindinput='getMemoValue'/>
                 <button class="detailList" bindtap="detailList">清单</button>
             </view>
         </view>
         <view class="btnArea">
-            <button form-type="submit">提交</button>
+            <button class="submit" form-type="submit">预约发单</button>
+            <button class="emergencyState {{ emergencycurrentTab == true ? 'emergencyStateRed' : '' }}" bindtap="emergencyBtn">{{emergency}}</button>
         </view>
     </form>
 </view> 

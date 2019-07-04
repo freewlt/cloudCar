@@ -16,6 +16,7 @@ module.exports = {
     MemberQueryEmployee: API_BASE_URL +'/yclmini/miniProgram/MemberQueryEmployee',
     getMemberGoodsOrdersLogs: API_BASE_URL +'/miniprogramGoodsOrder/getMemberGoodsOrdersLogs',
     AddGoodsMenuSendingOrder: API_BASE_URL +'/yclmini/miniprogram/AddGoodsMenuSendingOrder',
+    AddMenuGoodsOrder: API_BASE_URL +'/yclmini/MiniProgramGoodsOrder/AddMenuGoodsOrder',
     
     
     

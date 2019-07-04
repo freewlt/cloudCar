@@ -30,12 +30,15 @@ Page({
       timeStamp:TIME,
       sign:utilMd5.hexMD5(token + appid + TIME),
     }).then(function (res) {
-      console.log(res)
       if (res.resultCode == 1) {
-        var id = res.id;
-        var companyId = res.companyId;
-        var memberCode = 'https://app.ycl56.com /emc/memberAppReg?id='+id+"&companyId="+companyId;
-        var sijiCode ='https://app.ycl56.com /emc/dervierAppReg?id='+id+"&companyId="+companyId;
+        var companyId = res.data.companyId;
+        var employeeIdNew = res.data.employeeId;
+        console.log(res)
+        console.log(res.data.employeeId)
+        console.log(employeeIdNew)
+        var memberCode = 'https://app.ycl56.com/emc/memberAppReg?employeeId='+employeeId+"&companyId="+companyId;
+        var sijiCode ='https://app.ycl56.com/emc/dervierAppReg?employeeId='+employeeId+"&companyId="+ companyId;
+        console.log(sijiCode)
         _this.setData({
           wx:memberCode,
           apipay:sijiCode

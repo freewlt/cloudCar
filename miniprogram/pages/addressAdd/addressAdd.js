@@ -19,7 +19,9 @@ Page({
       _this.setData({
         linkMan:options.linkMan,
         linkPhone:options.linkPhone,
-        descAddress:options.descAddress
+        descAddress:options.descAddress,
+        lat:options.lat,
+        lon:options.lon
       })
     }
   },
