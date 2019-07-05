@@ -1,4 +1,4 @@
 {
   "component": true,
-  "usingComponents": {"navbar": "../../component/navbar/navbar"}
+  "usingComponents": {"navbar": "../../component/navbar/navbar","pickerYMDHM": "../../component/pickerYMDHM/pickerYMDHM"} 
 }

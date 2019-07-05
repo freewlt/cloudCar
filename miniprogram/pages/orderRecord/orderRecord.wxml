@@ -9,19 +9,19 @@
     <swiper current="{{currentTab}}" class='swiper' duration="300" bindchange="bindchange">
         <swiper-item>
             <view class="swiper_con"> 
-                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" id="{{item.id}}"  bindtap="handleBtn">
+                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" id="{{item.id}}" bindtap="handleBtn">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
-                                <text class="orderNo">订单号：{{item.orderNo}}</text>
-                                <text class="dispatcher">发货寄件：{{item.dispatcher}}</text>
+                                <text class="orderNo">订单号：{{item.orderNum}}</text>
+                                <text class="dispatcher">发货寄件：{{item.carType}}</text>
                             </view>
                             <view class="inputDetail txRt">
-                                <text class="time">{{item.time}}</text>
-                                <button class="handle">{{item.handle}}</button>
+                                <text class="time">{{item.addTime}}</text>
+                                <button class="handle">{{item.orState}}</button>
                             </view>
                         </view>
-                        <view class="address">起始地：<text>{{item.starAddress}}</text></view>
+                        <view class="address">起始地：<text>{{item.startAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
                 </view>
@@ -29,102 +29,102 @@
         </swiper-item> 
         <swiper-item>
             <view class="swiper_con"> 
-                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" url="{{item.path}}">
+                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" id="{{item.id}}" bindtap="handleBtn">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
-                                <text class="orderNo">订单号：{{item.orderNo}}</text>
-                                <text class="dispatcher">发货寄件：{{item.dispatcher}}</text>
+                                <text class="orderNo">订单号：{{item.orderNum}}</text>
+                                <text class="dispatcher">发货寄件：{{item.carType}}</text>
                             </view>
                             <view class="inputDetail txRt">
-                                <text class="time">{{item.time}}</text>
-                                <button class="handle">{{item.handle}}</button>
+                                <text class="time">{{item.addTime}}</text>
+                                <button class="handle">{{item.orState}}</button>
                             </view>
                         </view>
-                        <view class="address">起始地：<text>{{item.starAddress}}</text></view>
+                        <view class="address">起始地：<text>{{item.startAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </navigator>
+                </view>
             </view>
         </swiper-item>
          <swiper-item>
             <view class="swiper_con"> 
-                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" url="{{item.path}}">
+                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" id="{{item.id}}" bindtap="handleBtn">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
-                                <text class="orderNo">订单号：{{item.orderNo}}</text>
-                                <text class="dispatcher">发货寄件：{{item.dispatcher}}</text>
+                                <text class="orderNo">订单号：{{item.orderNum}}</text>
+                                <text class="dispatcher">发货寄件：{{item.carType}}</text>
                             </view>
                             <view class="inputDetail txRt">
-                                <text class="time">{{item.time}}</text>
-                                <button class="handle">{{item.handle}}</button>
+                                <text class="time">{{item.addTime}}</text>
+                                <button class="handle">{{item.orState}}</button>
                             </view>
                         </view>
-                        <view class="address">起始地：<text>{{item.starAddress}}</text></view>
+                        <view class="address">起始地：<text>{{item.startAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </navigator>
+                </view>
             </view>
         </swiper-item> 
         <swiper-item>
             <view class="swiper_con"> 
-                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" url="{{item.path}}">
+                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" id="{{item.id}}" bindtap="handleBtn">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
-                                <text class="orderNo">订单号：{{item.orderNo}}</text>
-                                <text class="dispatcher">发货寄件：{{item.dispatcher}}</text>
+                                <text class="orderNo">订单号：{{item.orderNum}}</text>
+                                <text class="dispatcher">发货寄件：{{item.carType}}</text>
                             </view>
                             <view class="inputDetail txRt">
-                                <text class="time">{{item.time}}</text>
-                                <button class="handle">{{item.handle}}</button>
+                                <text class="time">{{item.addTime}}</text>
+                                <button class="handle">{{item.orState}}</button>
                             </view>
                         </view>
-                        <view class="address">起始地：<text>{{item.starAddress}}</text></view>
+                        <view class="address">起始地：<text>{{item.startAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </navigator>
+                </view>
             </view>
         </swiper-item> 
         <swiper-item>
             <view class="swiper_con"> 
-                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" url="{{item.path}}">
+                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" id="{{item.id}}" bindtap="handleBtn">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
-                                <text class="orderNo">订单号：{{item.orderNo}}</text>
-                                <text class="dispatcher">发货寄件：{{item.dispatcher}}</text>
+                                <text class="orderNo">订单号：{{item.orderNum}}</text>
+                                <text class="dispatcher">发货寄件：{{item.carType}}</text>
                             </view>
                             <view class="inputDetail txRt">
-                                <text class="time">{{item.time}}</text>
-                                <button class="handle">{{item.handle}}</button>
+                                <text class="time">{{item.addTime}}</text>
+                                <button class="handle">{{item.orState}}</button>
                             </view>
                         </view>
-                        <view class="address">起始地：<text>{{item.starAddress}}</text></view>
+                        <view class="address">起始地：<text>{{item.startAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </navigator>
+                </view>
             </view>
         </swiper-item> 
         <swiper-item>
             <view class="swiper_con"> 
-                 <navigator class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id">
+                 <view class="veliBox" wx:for="{{deliveryInfo}}" wx:key="item.id" id="{{item.id}}" bindtap="handleBtn">
                     <view class="listBox">
                         <view class="detail">
                             <view class="inputDetail">
-                                <text class="orderNo">订单号：{{item.orderNo}}</text>
-                                <text class="dispatcher">发货寄件：{{item.dispatcher}}</text>
+                                <text class="orderNo">订单号：{{item.orderNum}}</text>
+                                <text class="dispatcher">发货寄件：{{item.carType}}</text>
                             </view>
                             <view class="inputDetail txRt">
-                                <text class="time">{{item.time}}</text>
-                                <button class="handle">{{item.handle}}</button>
+                                <text class="time">{{item.addTime}}</text>
+                                <button class="handle">{{item.orState}}</button>
                             </view>
                         </view>
-                        <view class="address">起始地：<text>{{item.starAddress}}</text></view>
+                        <view class="address">起始地：<text>{{item.startAddress}}</text></view>
                         <view class="address">目的地：<text>{{item.endAddress}}</text></view>
                     </view>
-                </navigator>
+                </view>
             </view>
         </swiper-item> 
     </swiper>

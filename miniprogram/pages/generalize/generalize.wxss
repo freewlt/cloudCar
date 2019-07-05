@@ -13,10 +13,15 @@ navbar{
     border-radius:10px;
     text-align: center
 }
-.picBox .wxAlipay image{
-    width: 300rpx;
-    height: 304rpx;
-    padding: 30rpx 0 8rpx;
+.picBox .wxAlipay .code{
+    width:264rpx;
+    height:264rpx;
+    padding:40rpx 0 30rpx;
+    margin:0 auto;   
+}
+canvas{
+    width: 100%;
+    height:100%;
 }
 .picBox .wxAlipay text{
     display: block;

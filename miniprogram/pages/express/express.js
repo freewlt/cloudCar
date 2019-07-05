@@ -8,7 +8,6 @@ Page({
   data: {
     title: '同城速运',
     itemList: ['kg', 'g', 't'],
-    date: '2019-06-25',
     time: '',
     currentTab: 0,
     index: 0,
@@ -21,7 +20,13 @@ Page({
     emergencycurrentTab:true,
     emergency:'紧急',
     emergencyState:0,
-    memo:''
+    memo:'',
+    date:'2021-01-01 12:38',
+    disabled:false,//设置是否能点击 false可以 true不能点击
+    startDate:2019,
+    endDate:2023,
+    choseTime:''
+
   },
   onLoad: function (options) {
     var _this = this;
@@ -45,6 +50,17 @@ Page({
     this.setData({
       time: TIME,
     });
+  },
+  /**
+   * 日历控件绑定函数 
+   * 点击日期返回
+   */
+  onPickerChange: function (e) {
+    var choseTime = util.formatTime(e.detail.date);
+    this.setData({
+      date: e.detail.dateString,
+      choseTime:util.formatTime(e.detail.date),
+    })
   },
 
   //获取input输入框的值
@@ -128,21 +144,6 @@ Page({
       index: e.detail.value
     })
   },
-  // 选择时间
-  bindDateChange: function (e) {
-    if (this.data.time < e.detail.value) {
-      this.setData({
-        date: e.detail.value
-      })
-    } else {
-      wx.showToast({
-        title: '所选时间须大于当前时间',
-        icon: 'none',
-        duration: 1000,
-        mask: true
-      })
-    }
-  },
   handleNumItem: function (e) {
     var that = this;
     this.setData({
@@ -176,6 +177,7 @@ Page({
     var dunWeight = _this.data.dunWeight;
     var goodsName = _this.data.goodsName;
     var piece = _this.data.piece;
+    var choseTime = _this.data.choseTime;
     var emergencyState = _this.data.emergencyState;
     var memo = _this.data.memo;
     this.setData({
@@ -206,7 +208,7 @@ Page({
       // requestList
       orderType:'3',
       amount:0,
-      time:12,
+      time:choseTime,
       piece:piece,
       distance:200,
       emergencyState:emergencyState,

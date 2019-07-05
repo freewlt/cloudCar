@@ -111,14 +111,9 @@ Page({
       userName:userName,
       appId:appid,
     }).then(function (res) {
-      console.log(res)
-      wx.setStorage({key:"userDetail",data:{
-        id: res.id,
-        token: res.token,
-        companyPhone: res.companyPhone,
-        companyName:res.companyName,
-        parentId:res.parentId,
-        createUserId:res.createUserId}})
+      const key = 'userDetail'
+      const data = res;
+      wx.setStorage({ key, data })
       if (res.resultCode == 1) {
           wx.switchTab ({
             url: '../home/home',

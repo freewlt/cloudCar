@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/orderRecord/orderRecord",
-    "pages/index/index",
-    "pages/login/login",
     "pages/home/home",
+    "pages/login/login",
+    "pages/index/index",
     "pages/sysMes/sysMes",
     "pages/generalize/generalize",
     "pages/personal/personal",
@@ -12,8 +12,8 @@
     "pages/changePassword/changePassword",
     "pages/changePhone/changePhone",
     "pages/sameVehicle/sameVehicle",
-    "pages/cityTravel/cityTravel",
     "pages/express/express",
+    "pages/cityTravel/cityTravel",
     "pages/detailList/detailList",
     "pages/addressList/addressList",
     "pages/addressAdd/addressAdd",
@@ -21,6 +21,7 @@
     "pages/balance/balance",
     "pages/handle/handle",
     "pages/map/map",
+    "pages/maps/maps",
     "pages/orderReceive/orderReceive",
     "pages/paymentDetail/paymentDetail",
     "pages/payment/payment",
@@ -41,18 +42,21 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "color":"#9B9B9B",
-    "selectedColor":"#086ee0",
-    "list": [{
-      "pagePath": "pages/home/home",
-      "text": "首页",
-      "iconPath":"./images/home.png",
-      "selectedIconPath":"./images/homeSel.png"
-    }, {
-      "pagePath": "pages/personal/personal",
-      "text": "我的",
-      "iconPath":"./images/personal.png",
-      "selectedIconPath":"./images/personalSelect.png"
-    }]
+    "color": "#9B9B9B",
+    "selectedColor": "#086ee0",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "./images/home.png",
+        "selectedIconPath": "./images/homeSel.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "./images/personal.png",
+        "selectedIconPath": "./images/personalSelect.png"
+      }
+    ]
   }
 }

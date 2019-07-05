@@ -3,14 +3,20 @@ const app = getApp();
 import util from '../../utils/util.js';
 import api from '../../utils/api.js';
 import utilMd5 from '../../utils/md5.js';
+import QRCode from '../../utils/qrcode.js'
 
 Page({
   data: {
     title:'推广二维码',
-    wx:'../../images/WX.png',
-    apipay:'../../images/WX.png',
+    Member:'',
+    siji:'',
    },
   onLoad: function (){
+    this.fetachData();
+    this.createQrCode ('wxapp-qrcode', 'canvasMember', 110, 110)
+    this.createQrCode ('wxapp-qrcode', 'canvasSiji', 110, 110)
+   },
+   fetachData:function(){
     var _this = this;
     var TIME = util.formatTime(new Date());
     var userDetail = wx.getStorageSync('userDetail');
@@ -31,17 +37,13 @@ Page({
       sign:utilMd5.hexMD5(token + appid + TIME),
     }).then(function (res) {
       if (res.resultCode == 1) {
-        var companyId = res.data.companyId;
-        var employeeIdNew = res.data.employeeId;
-        console.log(res)
-        console.log(res.data.employeeId)
-        console.log(employeeIdNew)
-        var memberCode = 'https://app.ycl56.com/emc/memberAppReg?employeeId='+employeeId+"&companyId="+companyId;
-        var sijiCode ='https://app.ycl56.com/emc/dervierAppReg?employeeId='+employeeId+"&companyId="+ companyId;
-        console.log(sijiCode)
+        var companyId = res.companyId;
+        var employeeIdNew = res.employeeId;
+        var memberCode = 'https://app.ycl56.com/emc/memberAppReg?employeeId='+employeeIdNew+"&companyId="+companyId;
+        var sijiCode ='https://app.ycl56.com/emc/dervierAppReg?employeeId='+employeeIdNew+"&companyId="+ companyId;
         _this.setData({
-          wx:memberCode,
-          apipay:sijiCode
+          Member:memberCode,
+          siji:sijiCode
         })
         wx.hideLoading();
       }else{
@@ -53,6 +55,34 @@ Page({
       }
     });
    },
+  createQrCode: function (content, canvasId, cavW, cavH) {
+    //调用插件中的draw方法，绘制二维码图片
+    QRCode.api.draw(content, canvasId, cavW, cavH);
+    this.canvasToTempImage(canvasId);
+  },
+  
+  //获取临时缓存图片路径，存入data中
+  canvasToTempImage: function (canvasId) {
+    let _this = this;
+    setTimeout(function () {
+      wx.canvasToTempFilePath({
+        canvasId,   // 这里canvasId即之前创建的canvas-id
+        success: function (res) {
+          let memberCode = _this.data.Member;
+          let sijiCode = _this.data.siji;
+          console.log(memberCode);
+          _this.setData({ 
+            siji:sijiCode,     
+            Member:memberCode,  
+          });
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      });
+     }, 500) 
+    
+  },
   //返回按钮
   onMyEvent: function(e){
     let pages = getCurrentPages();

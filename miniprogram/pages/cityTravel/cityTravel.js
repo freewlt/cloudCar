@@ -7,9 +7,7 @@ import utilMd5 from '../../utils/md5.js';
 Page({
   data: {
     title:'同城整车',
-    // itemList: ['顺风车', '专车', '私家车', '出租车'],
     itemList: [],
-    date: '2019-06-25',
     time:'',
     currentTab: 0,
     index: 0, 
@@ -22,7 +20,12 @@ Page({
     emergencyState:0,
     memo:'',
     startAddress:'',
-    endAddress:''
+    endAddress:'',
+    date:'2021-01-01 12:38',
+    disabled:false,//设置是否能点击 false可以 true不能点击
+    startDate:2019,
+    endDate:2023,
+    choseTime:''
    },
   onLoad: function (){
     var _this = this;
@@ -40,7 +43,6 @@ Page({
         token:token,
         vehicleType:1,
       }).then(function (res) {
-        console.log(res)
         if (res.resultCode == 1) {
           _this.setData({
             itemList: res.list.map((it) => it.carType)
@@ -54,6 +56,17 @@ Page({
         }
       });
    },
+   /**
+   * 日历控件绑定函数 
+   * 点击日期返回
+   */
+  onPickerChange: function (e) {
+    var choseTime = util.formatTime(e.detail.date);
+    this.setData({
+      date: e.detail.dateString,
+      choseTime:util.formatTime(e.detail.date),
+    })
+  },
    //获取input输入框的值
   getstartAddressValue: function (e) {
     this.setData({
@@ -142,17 +155,18 @@ Page({
     var token=userDetail.token;
     var parentId=userDetail.parentId;
     var createUserId=userDetail.createUserId;
-    //var linkMan = _this.data.deliveryInfo.linkMan;
-    //var linkPhone = _this.data.deliveryInfo.linkPhone;
-    //var startAddress = _this.data.deliveryInfo.descAddress;
+    var linkMan = userDetail.linkMan;
+    var linkPhone = userDetail.linkPhone;
+    var startAddress = _this.data.startAddress;
     //var startlat = _this.data.deliveryInfo.lat;
    // var startlon = _this.data.deliveryInfo.lon;
     //var endLinkMan = _this.data.deliveryInfoShou.linkMan;
     //var endLinkPhone = _this.data.deliveryInfoShou.linkPhone;
-    //var endAddress = _this.data.deliveryInfoShou.descAddress;
+    var endAddress = _this.data.endAddress;
     var dunWeight = _this.data.dunWeight;
     var goodsName = _this.data.goodsName;
     var piece = _this.data.piece;
+    var choseTime = _this.data.choseTime;
     var emergencyState = _this.data.emergencyState;
     var memo = _this.data.memo;
     this.setData({
@@ -167,12 +181,12 @@ Page({
       sign:utilMd5.hexMD5(token + appid + TIME),
       products:'',
       // productNu:'',
-      startAddress:'startAddress',
-      linkMan:'515',
-      linkPhone:'155',
+      startAddress:startAddress,
+      linkMan:linkMan,
+      linkPhone:linkPhone,
       startlat:'startlat',
       startlon:'startlon',
-      endAddress:'endAddress',
+      endAddress:endAddress,
       endLinkMan:'endLinkMan',
       endLinkPhone:'endLinkPhone',
       companyId:parentId,
@@ -184,7 +198,7 @@ Page({
       // requestList
       orderType:'1',
       amount:0,
-      time:12,
+      time:choseTime,
       piece:piece,
       distance:200,
       emergencyState:emergencyState,

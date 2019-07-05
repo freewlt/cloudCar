@@ -5,7 +5,7 @@
         <view class="listBox">
             <text class="titleName">起始地</text>
             <view class="detail">
-                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{startAddress}}" bindinput='getStarAddressValue'/>
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{startAddress}}" bindinput='getstartAddressValue'/>
             </view>
         </view>
         <view class="listBox">
@@ -17,9 +17,8 @@
         <view class="listBox" bindchange="bindDateChange">
             <text class="titleName">用车时间</text>
             <view class="detail">
-                <picker class="inputDetail"  bindchange="bindDateChange" mode="date" value="{{date}}" start="2019-06-25" end="2020-09-01" > 
-                    {{date}}
-                </picker>
+                 <pickerYMDHM class="inputDetail" date = "{{date}}" disabled = "{{disabled}}" bind:onPickerChange="onPickerChange" startDate="{{startDate}}" endDate="{{endDate}}">
+                </pickerYMDHM>
             </view>
         </view>
         <view class="listBox seaBox">

@@ -3,11 +3,16 @@
     <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
     <view class="picBox">
         <view class="wxAlipay wxBox">
-            <image class="wx" src="{{wx}}" />
+             <view class="code">
+                 <canvas canvas-id="canvasMember"/>
+            </view>
+
             <text class="picTxt">推广二维码</text>
         </view>
         <view class="wxAlipay alipayBox">
-            <image class="alipay" src="{{alipay}}" />
+             <view class="code">
+                 <canvas canvas-id="canvasSiji"/>
+            </view>
             <text class="picTxt">司机二维码</text>
         </view>
     </view>
