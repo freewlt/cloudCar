@@ -1,0 +1,56 @@
+<!--pages/maps/maps.wxml-->
+<navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
+<view class="tui-map">
+  <map id="map" longitude="{{currentLo}}" latitude="{{currentLa}}" scale="{{scale}}" markers="{{markers}}" polyline="{{polyline}}"  include-points="{{includePoints}}" show-location style="width: 100%; height: 100%;"></map>
+</view>
+<view class="tui-search-bottom {{show ? '' : 'tui-hide'}}">
+  <view class="page-group">
+    <view class="page-nav-list {{statusType == 'car' ? 'active' : ''}}" data-type="car" bindtap="goTo">出行快车</view>
+    <view class="page-nav-list {{statusType == 'walk' ? 'active' : ''}}" data-type="walk" bindtap="goTo">出行专车</view>
+    <view class="page-nav-list {{statusType == 'ride' ? 'active' : ''}}" data-type="ride" bindtap="goTo">顺风车</view>
+  </view>
+  <view class="container">
+    <form class="content" bindsubmit="formSubmit" bindreset="formReset">
+        <view class="listBox" bindtap="getAddress" data-id='1'>
+            <text class="titleName">起始地</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{startAddress}}" bindinput='getstartAddressValue' focus="{{focusStatus}}"/>
+            </view>
+        </view>
+        <view class="listBox" bindtap="getAddress" data-id='2'>
+            <text class="titleName">目的地</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{endAddress}}" bindinput='getendAddressValue' focus="{{focusStatus}}"/>
+            </view>
+        </view>
+        <view class="listBox" bindchange="bindDateChange">
+            <text class="titleName">时  间</text>
+            <view class="detail">
+                 <pickerYMDHM class="inputDetail" date = "{{date}}" disabled = "{{disabled}}" bind:onPickerChange="onPickerChange" startDate="{{startDate}}" endDate="{{endDate}}">
+                </pickerYMDHM>
+            </view>
+        </view>
+        <view class="listBox seaBox">
+            <text class="titleName">座位数</text>
+            <view class="detail">
+                <button class="numList {{ currentTab == index ? 'numListSelect' : '' }}"  
+                bindtap="handleNumItem" id="{{index}}"
+                wx:for="{{numList}}" wx:key="{{index}}">{{item}}</button>
+            </view>
+        </view>
+        <!-- <view class="listBox" bindchange="carTypeBtn">
+            <text class="titleName">用车类型</text>
+            <view class="detail">
+                <picker class="inputDetail"  bindchange="carTypeBtn" value="{{index}}" range="{{itemList}}">
+                   {{itemList[index]}}
+                </picker>
+                <image class="arrow" src="../../images/arrow.png"/>
+            </view>
+        </view> -->
+        <view class="btnArea">
+            <button class="submit" form-type="submit">预约发单</button>
+            <button class="emergencyState {{ emergencycurrentTab == true ? 'emergencyStateRed' : '' }}" bindtap="emergencyBtn">{{emergency}}</button>
+        </view>
+    </form>
+</view> 
+</view>

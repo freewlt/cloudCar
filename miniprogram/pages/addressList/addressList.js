@@ -118,7 +118,7 @@ Page({
     this.setData({
       time: TIME,
     });
-    util.request(api.getPiecesAddress + page,{
+    util.request(api.getPiecesAddress+'?page=' + page,{
       userId:userId,
       appId:appid,
       token:token,
@@ -129,8 +129,9 @@ Page({
       pageSize:'12'
     }).then(function (res) {
       if (res.resultCode == 1) {
+        const oldData = _this.data.deliveryInfo;
         _this.setData({
-          deliveryInfo:res.list
+          deliveryInfo:oldData.concat(res.data)
         })
         // 隐藏加载框
         wx.hideLoading();

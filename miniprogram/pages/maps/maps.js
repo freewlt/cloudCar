@@ -6,7 +6,8 @@ import amapFile from '../../utils/amap-wx.js';
 Page({
   data: {
     key: 'c290b7e016c85e8f279b2f80018c6fbf',
-    show: false,
+    title:'同城整车', 
+    isShow: true,
     currentLo : null,
     currentLa : null,
     newCurrentLo : null,
@@ -126,5 +127,11 @@ Page({
     var _type = e.currentTarget.dataset.type;
     this.setData({statusType : _type});
     this.getPolyline(_type);
-  }
+  },
+  //订单收起展开
+  trangerBtn:function(){
+    this.setData({
+      isShow : !this.data.isShow
+    })
+ },
 })

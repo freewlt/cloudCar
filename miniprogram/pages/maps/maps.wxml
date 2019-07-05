@@ -18,4 +18,34 @@
   <view class="tui-warn">
     {{duration}}分钟
   </view>
+  <view  class="content">
+        <view class="trangerBox" bindtap="trangerBtn"><view class="tranger {{isShow ? '':'trangerTran'}}"></view></view>
+        <view class="listShow" wx:if="{{isShow}}">
+        <view class="listBox">
+            <view class="detail">
+                <text class="name">{{detail.name}}</text>
+                <text class="price">{{detail.price}}</text>
+            </view>
+        </view>
+        <view class="listBox">
+            <view class="detail">
+                <text class="name">时间</text>
+                <text class="time">{{detail.time}}</text>
+            </view>
+        </view>
+        <view class="listBox addressBox">
+            <view class="detail">
+                <image class="addressPic" src="../../images/start.png"/>
+                <text class="addressTxt">{{startAddress}}</text>
+            </view>
+            <view class="detail">
+                <image class="addressPic" src="../../images/end.png"/>
+                <text class="addressTxt">{{endAddress}}</text>
+            </view>
+        </view>
+        <view class="btnArea">
+            <button class="detail" bindtap="detailListBtn">清单</button>
+            <button class="again" bindtap="againBtn">重新发布订单</button>
+        </view></view>
+    </view>
 </view>

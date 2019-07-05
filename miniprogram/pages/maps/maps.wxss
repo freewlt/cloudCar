@@ -61,7 +61,6 @@
     font-size: 30rpx;
   }
   .tui-search-bottom{
-    height: 150px;
     background: #fff;
     width: 100%;
     position: fixed;
@@ -69,3 +68,98 @@
     left: 0;
     z-index: 1000;
   }
+  .content{
+    /* position: absolute;
+    bottom:0;
+    left:0; */
+    width:100%;
+    background:#fff;
+}
+.listBox{
+    clear: both;
+    width: 100%;
+    padding:20rpx 0;
+    border-bottom:2rpx solid rgba(233,233,233,1);
+}
+.listShow{
+    width:100%;
+    margin-top:-40rpx;
+}
+.listBox .detail{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding: 0 5%;
+}
+.listBox text{
+    display:block;
+    width:100%;
+    font-size:32rpx;
+    font-family:MicrosoftYaHeiUI;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+}
+.listBox .detail .price{
+    font-size:42rpx;
+    color:rgba(255,61,0,1);
+    text-align: right;
+}
+.listBox .detail .time{  
+    font-size:32rpx;
+    font-weight:bold;
+    color:rgba(0,0,0,1);  
+    text-align: right;
+}
+.addressBox .detail:nth-child(2){
+    padding-top: 16rpx;
+}
+.addressBox .detail .addressPic{
+    display: inline-block;
+    vertical-align: middle;
+    width:42rpx;
+    height:38rpx;
+    padding-right:10rpx;
+}
+.addressBox .detail .addressTxt{
+    font-size:25rpx;
+    font-family:MicrosoftYaHeiUI-Bold;
+    font-weight:bold;
+    color:rgba(0,0,0,1);
+}
+
+.trangerBox{
+    width:100%;
+    padding:20rpx 0;
+}
+.tranger{
+    display: block;
+    width:0;
+    height:0;
+    margin:0 auto;
+    border-top:21rpx solid #C9C9C9;
+    border-right:21rpx solid transparent;
+    border-left:21rpx solid transparent;
+    border-bottom:21rpx solid transparent;
+}
+.trangerTran{
+    transform: rotate(180deg);
+}
+
+.btnArea{
+    clear: both;
+    width: 90%;
+    padding:20rpx 0;
+    margin:0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.btnArea button{
+    width:324rpx;
+    height:100rpx;
+    background:rgba(8,110,224,1);
+    border-radius:20rpx;
+    color:#fff;
+}
+.btnArea .again{
+    background:#259F31;
+}

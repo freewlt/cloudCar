@@ -26,7 +26,6 @@ Page({
     startDate:2019,
     endDate:2023,
     choseTime:''
-
   },
   onLoad: function (options) {
     var _this = this;
@@ -161,7 +160,6 @@ Page({
     var TIME = util.formatTime(new Date());
     var userDetail = wx.getStorageSync('userDetail')
     var appid=app.globalData.appid;
-    var appid ='wx0b5fd5d4d5f1dd68';
     var userId=userDetail.id;
     var token=userDetail.token;
     var parentId=userDetail.parentId;
