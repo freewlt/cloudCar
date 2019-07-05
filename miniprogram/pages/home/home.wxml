@@ -33,7 +33,7 @@
         </view>
     </view>
     <view class="menuBox">
-        <navigator class="list" wx:for="{{list}}" wx:key="item.id" url="{{item.path}}">
+        <navigator class="list" wx:for="{{list}}" wx:key="item.id" bindtap="listBtn" data-id="{{item.id}}" url="{{item.path}}">
             <image class="pic" src="{{item.pic}}"/>
             <view class="txtBox">
                 <text class="title">{{item.title}}</text>

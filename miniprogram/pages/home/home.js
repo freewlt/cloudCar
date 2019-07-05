@@ -17,11 +17,11 @@ Page({
     orderNum:'',
     ticketNum:'',
     list:[
-      {title:'同城整车',slogn:'找车就是快！',pic:'../../images/zheng.png',path:'../mapSameVehicle/mapSameVehicle'},
-      {title:'寄件发货',slogn:'顺风车拼货更实惠！',pic:'../../images/pin.png',path:'../express/express'},
-      {title:'出行用车',slogn:'轻松找到私家车！',pic:'../../images/car.png',path:'../mapCityTravel/mapCityTravel'},
-      {title:'客服电话',slogn:'快速解决疑难问题！',pic:'../../images/service.png'},
-    ]
+      {id:0,title:'同城整车',slogn:'找车就是快！',pic:'../../images/zheng.png',path:'../mapSameVehicle/mapSameVehicle'},
+      {id:10,title:'寄件发货',slogn:'顺风车拼货更实惠！',pic:'../../images/pin.png',path:'../express/express'},
+      {id:2,title:'出行用车',slogn:'轻松找到私家车！',pic:'../../images/car.png',path:'../mapCityTravel/mapCityTravel'},
+      {id:3,title:'客服电话',slogn:'快速解决疑难问题！',pic:'../../images/service.png',path:'../home/home'},
+    ],
    },
   onLoad: function (){
       var _this = this;
@@ -50,7 +50,14 @@ Page({
       });
    },
 
- 
+   //拨打电话
+   listBtn:function(e){
+    if(e.currentTarget.dataset.id == 3){
+      wx.makePhoneCall({
+        phoneNumber: '1340000' //仅为示例，并非真实的电话号码
+      })
+    }
+   },
   //登录
   codeBtn:function(){
     wx.navigateTo({

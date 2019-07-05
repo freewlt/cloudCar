@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/index/index",
     "pages/home/home",
+    "pages/index/index",
+    "pages/login/login",
     "pages/sysMes/sysMes",
     "pages/generalize/generalize",
     "pages/personal/personal",
