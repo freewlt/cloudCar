@@ -17,9 +17,9 @@ Page({
     orderNum:'',
     ticketNum:'',
     list:[
-      {title:'同城整车',slogn:'找车就是快！',pic:'../../images/zheng.png',path:'../sameVehicle/sameVehicle'},
+      {title:'同城整车',slogn:'找车就是快！',pic:'../../images/zheng.png',path:'../mapSameVehicle/mapSameVehicle'},
       {title:'寄件发货',slogn:'顺风车拼货更实惠！',pic:'../../images/pin.png',path:'../express/express'},
-      {title:'出行用车',slogn:'轻松找到私家车！',pic:'../../images/car.png',path:'../cityTravel/cityTravel'},
+      {title:'出行用车',slogn:'轻松找到私家车！',pic:'../../images/car.png',path:'../mapCityTravel/mapCityTravel'},
       {title:'客服电话',slogn:'快速解决疑难问题！',pic:'../../images/service.png'},
     ]
    },

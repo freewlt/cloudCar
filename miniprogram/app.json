@@ -1,9 +1,8 @@
 {
   "pages": [
-    "pages/mapSameVehicle/mapSameVehicle",
-    "pages/home/home",
     "pages/login/login",
     "pages/index/index",
+    "pages/home/home",
     "pages/sysMes/sysMes",
     "pages/generalize/generalize",
     "pages/personal/personal",
@@ -23,6 +22,7 @@
     "pages/map/map",
     "pages/maps/maps",
     "pages/mapCityTravel/mapCityTravel",
+    "pages/mapSameVehicle/mapSameVehicle",
     "pages/orderReceive/orderReceive",
     "pages/orderRecord/orderRecord",
     "pages/paymentDetail/paymentDetail",

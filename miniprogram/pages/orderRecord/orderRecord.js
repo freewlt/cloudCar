@@ -59,7 +59,6 @@ Page({
     var TIME = util.formatTime(new Date());
     var userDetail = wx.getStorageSync('userDetail');
     var appid=app.globalData.appid;
-    var appid ='wx0b5fd5d4d5f1dd68';
     var userId=userDetail.id;
     var token=userDetail.token;
     var orderstate = _this.data.orderstate;
@@ -149,7 +148,6 @@ Page({
       var TIME = util.formatTime(new Date());
       var userDetail = wx.getStorageSync('userDetail');
       var appid=app.globalData.appid;
-      var appid ='wx0b5fd5d4d5f1dd68';
       var userId=userDetail.id;
       var token=userDetail.token;
       var orderstate = _this.data.orderstate;
@@ -250,7 +248,6 @@ Page({
       var TIME = util.formatTime(new Date());
       var userDetail = wx.getStorageSync('userDetail');
       var appid=app.globalData.appid;
-      var appid ='wx0b5fd5d4d5f1dd68';
       var userId=userDetail.id;
       var token=userDetail.token;
       var orderstate = _this.data.orderstate;
