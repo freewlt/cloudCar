@@ -38,7 +38,7 @@ Page({
     polyline: null,
     statusType: 'car',
     includePoints:[],
-
+    current:0,
   },
   onLoad(){
     var _this = this;
@@ -65,7 +65,7 @@ Page({
       }).then(function (res) {
         if (res.resultCode == 1) {
           _this.setData({
-            itemList: res.list.map((it) => it.carType)
+            itemList:res.list,
           })
         }else{
           wx.showToast({
@@ -292,8 +292,18 @@ Page({
         return false;
     }
   },
-  goTo(e){
-    var _type = e.currentTarget.dataset.type;
+  // goTo(e){
+  //   var _type = e.currentTarget.dataset.type;
+  //   this.setData({statusType : _type});
+  //   this.getPolyline(_type);
+  // },
+   //选择车型
+   goTo(e){
+    var _this = this;
+    _this.setData({
+      current: e.target.dataset.id,
+    })
+    var _type = _this.data.current;
     this.setData({statusType : _type});
     this.getPolyline(_type);
   },

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/mapSameVehicle/mapSameVehicle",
     "pages/home/home",
     "pages/index/index",
     "pages/login/login",
@@ -22,7 +23,6 @@
     "pages/map/map",
     "pages/maps/maps",
     "pages/mapCityTravel/mapCityTravel",
-    "pages/mapSameVehicle/mapSameVehicle",
     "pages/orderReceive/orderReceive",
     "pages/orderRecord/orderRecord",
     "pages/paymentDetail/paymentDetail",

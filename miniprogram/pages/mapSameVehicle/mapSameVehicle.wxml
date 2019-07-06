@@ -5,9 +5,11 @@
 </view>
 <view class="tui-search-bottom {{show ? '' : 'tui-hide'}}">
   <view class="page-group">
-    <view class="page-nav-list {{statusType == 'car' ? 'active' : ''}}" data-type="car" bindtap="goTo">出行快车</view>
+      <view class="page-nav-list {{ current == item.id ? 'active' : '' }}" wx:for="{{itemList}}" wx:key="{{index}}"  data-id="{{item.id}}" bindtap="goTo"> {{item.carType}}</view>
+
+    <!-- <view class="page-nav-list {{statusType == 'car' ? 'active' : ''}}" data-type="car" bindtap="goTo">出行快车</view>
     <view class="page-nav-list {{statusType == 'walk' ? 'active' : ''}}" data-type="walk" bindtap="goTo">出行专车</view>
-    <view class="page-nav-list {{statusType == 'ride' ? 'active' : ''}}" data-type="ride" bindtap="goTo">顺风车</view>
+    <view class="page-nav-list {{statusType == 'ride' ? 'active' : ''}}" data-type="ride" bindtap="goTo">顺风车</view> -->
   </view>
   <view class="container">
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">

@@ -36,8 +36,9 @@ Page({
     markers : null,
     scale: 16,
     polyline: null,
-    statusType: 'car',
+    statusType: '21',
     includePoints:[],
+    current:0,
 
   },
   onLoad(){
@@ -65,7 +66,7 @@ Page({
       }).then(function (res) {
         if (res.resultCode == 1) {
           _this.setData({
-            itemList: res.list.map((it) => it.carType)
+            itemList:res.list,
           })
         }else{
           wx.showToast({
@@ -155,12 +156,6 @@ Page({
      delta: 1
    })
   },
-  //选择车型
-  // carTypeBtn: function (e) {
-  //   this.setData({
-  //       index: e.detail.value
-  //   })
-  // },
   getStartAddressBtn:function(){
     var _this =this;
     wx.getLocation({
@@ -245,6 +240,7 @@ Page({
       }
     });
   },
+
   drawPolyline(self,color){
     return {
       origin: this.data.currentLo + ',' + this.data.currentLa,
@@ -280,21 +276,26 @@ Page({
     var amap = new amapFile.AMapWX({ key: this.data.key });
     var self = this;
     switch (_type){
-      case 'car':
+      case '21':
         amap.getDrivingRoute(this.drawPolyline(this,"#0091ff"));
         break;
       case 'walk':
         amap.getWalkingRoute(this.drawPolyline(this, "#1afa29"));
         break;
-      case 'ride':
+      case '22':
         amap.getRidingRoute(this.drawPolyline(this, "#1296db"));
         break;
       default:
         return false;
     }
   },
+  //选择车型
   goTo(e){
-    var _type = e.currentTarget.dataset.type;
+    var _this = this;
+    _this.setData({
+      current: e.target.dataset.id,
+    })
+    var _type = _this.data.current;
     this.setData({statusType : _type});
     this.getPolyline(_type);
   },
