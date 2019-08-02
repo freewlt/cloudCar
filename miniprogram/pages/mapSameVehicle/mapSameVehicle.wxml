@@ -5,9 +5,7 @@
 </view>
 <view class="tui-search-bottom {{show ? '' : 'tui-hide'}}">
   <view class="page-group">
-    <view class="page-nav-list {{statusType == 'car' ? 'active' : ''}}" data-type="car" bindtap="goTo">出行快车</view>
-    <view class="page-nav-list {{statusType == 'walk' ? 'active' : ''}}" data-type="walk" bindtap="goTo">出行专车</view>
-    <view class="page-nav-list {{statusType == 'ride' ? 'active' : ''}}" data-type="ride" bindtap="goTo">顺风车</view>
+   <view class="page-nav-list {{ currentTab == item.id ? 'active' : '' }}" wx:for="{{itemList}}" wx:key="{{carTypeIndex}}"  data-id="{{item.id}}" bindtap="goTo"> {{item.carType}}</view>
   </view>
   <view class="container">
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
@@ -23,6 +21,7 @@
                 <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{endAddress}}" bindinput='getendAddressValue' focus="{{focusStatus}}"/>
             </view>
         </view>
+        
         <view class="listBox" bindchange="bindDateChange">
             <text class="titleName">时  间</text>
             <view class="detail">
@@ -30,18 +29,36 @@
                 </pickerYMDHM>
             </view>
         </view>
-        <!-- <view class="listBox" bindchange="carTypeBtn">
-            <text class="titleName">用车类型</text>
+         <view class="listBox" >
+            <text class="titleName">货物名称:</text> 
             <view class="detail">
-                <picker class="inputDetail"  bindchange="carTypeBtn" value="{{index}}" range="{{itemList}}">
-                   {{itemList[index]}}
-                </picker>
-                <image class="arrow" src="../../images/arrow.png"/>
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{goodsName}}" bindinput='getNameValue'/>
             </view>
-        </view> -->
+        </view>
+      <view class="listBox" data-id='2'>
+            <text class="titleName">件  数:</text> 
+            <view class="detail">
+                <input class="inputDetail" type="number" placeholder="请输入"             placeholder-class="phcolor" value="{{piece}}" bindinput='getPieceValue'/>
+            </view>
+        </view>
+          <view class="listBox" data-id='2'>
+            <text class="titleName">重  量:</text> 
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入"             placeholder-class="phcolor" value="{{dunWeight}}"  bindinput='getDunValue'/>
+            </view>
+              <picker class="weight"  bindchange="weightBtn" value="{{dunWeighindex}}" range="{{dunWeightItemList}}">
+                   {{dunWeightItemList[dunWeighindex]}}
+               </picker>
+        </view>
+         <view class="listBox" data-id='2'>
+            <text class="titleName">备注:</text> 
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{memo}}" bindinput='getMemoValue'/>
+            </view>
+        </view>
         <view class="btnArea">
-            <button class="submit" form-type="submit">预约发单</button>
-            <button class="emergencyState {{ emergencycurrentTab == true ? 'emergencyStateRed' : '' }}" bindtap="emergencyBtn">{{emergency}}</button>
+            <button class="submit" form-type="submit">{{partAmountName}}</button>
+            <button class="emergencyState {{ emergencycurrentTab == true ? 'emergencyStateRed' : '' }}" bindtap="emergencyBtn">{{emergencyName}}</button>
         </view>
     </form>
 </view> 

@@ -1,4 +1,7 @@
 /* pages/maps/maps.wxss */
+page{
+  height:100%;
+}
 .tui-map-search{
     width: 100%;
     height: 80rpx;
@@ -24,10 +27,10 @@
   }
   .tui-map{
     width: 100%;
-    height: calc(100% - 98rpx);
-    position: fixed;
+    height: 800rpx;
+    /* position: fixed;
     bottom: 0;
-    left: 0;
+    left: 0; */
   }
   .tui-map-direction{
     width: 32px;
@@ -43,6 +46,7 @@
     width: 100%;
     table-layout: fixed;
     background-color: #fff;
+    border-bottom:1px solid #ccc;
   }
   .page-nav-list{
     padding:20rpx 0 ;
@@ -51,8 +55,13 @@
     text-align: center;
     width: 100%;
     color: #222;
+    font-weight:bold;
+    border-bottom:1px solid #ccc;
   }
-  .page-nav-list.active{color:blue;}
+  .page-nav-list.active{
+    color:#086ee0;
+    border-bottom:2px solid #086ee0;
+  }
   .tui-warn{
     height: 50px;
     line-height: 50px;
@@ -63,9 +72,9 @@
   .tui-search-bottom{
     background: #fff;
     width: 100%;
-    position: fixed;
+    /* position: fixed;
     bottom: 0;
-    left: 0;
+    left: 0; */
     z-index: 1000;
   }
   navbar{
@@ -163,7 +172,7 @@
     color:rgba(255,255,255,1);
 }
 .emergencyState{
-    width:100px;
+    width:140px;
     height:100rpx;
     background:greenyellow;
     border-radius:20rpx;

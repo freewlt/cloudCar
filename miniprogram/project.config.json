@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.7.7",
 	"appid": "wx0b5fd5d4d5f1dd68",
-	"projectname": "miniprogram-test-1",
+	"projectname": "cloudCar",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

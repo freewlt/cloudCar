@@ -1,0 +1,31 @@
+<!--pages/detailPerson/detailPerson.wxml-->
+<view class="container">
+    <!-- 导航 -->
+    <navbar title="{{title}}" bind:myevent="onMyEvent"></navbar>
+    <form class="content" bindsubmit="formSubmit" bindreset="formReset">
+        <!-- 主体 -->
+        <view class="listBox">
+            <text class="titleName">联系人</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{linkMan}}" bindinput='getManValue'/>
+            </view>
+        </view>
+        <view class="listBox">
+            <text class="titleName">联系电话</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{linkPhone}}" bindinput='getPhoneValue'/>
+            </view>
+        </view>
+        <view class="listBox detialListBox" bindchange="carTypeBtn">
+            <text class="titleName">联系地址</text>
+            <view class="detail">
+                <input class="inputDetail" type="text" placeholder="请输入" placeholder-class="phcolor" value="{{descAddress}}" bindinput='getAddressValue'/>
+                <button class="detailList" bindtap="location">定位</button>
+            </view>
+        </view>
+        <!-- 按钮 -->
+        <view class="btnArea">
+            <button form-type="submit">保存</button>
+        </view>
+    </form>
+</view> 

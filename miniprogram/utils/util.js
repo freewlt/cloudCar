@@ -11,7 +11,25 @@ function formatTime(date) {
 
     return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
+function meterSmile(distance){
+  var  smile=0;
+  if (distance < 1000)
+    smile=1;//distance + "米");
+  else if (distance > 1000)
+    smile=((Math.round(distance / 100) / 10).toFixed(1));
+    return smile;
+}
+//
+function getAmount(basePrice, startMiles, miles,distance) {
+  var amount=0.00;
+  if (startMiles >= distance){
+    amount = basePrice;
+  }else{
+    amount = (basePrice+ (distance - startMiles) * miles);
+  }
+  return amount;
+}
+//
 function todate(inputstr, showsplit) {
         //Wed Mar 22 13:38:37 CST 2017
         inputstr = inputstr + ""; //末尾加一个空格
@@ -144,6 +162,8 @@ function showSuccessToast(msg) {
 
 module.exports = {
     formatTime,
+    meterSmile,
+    getAmount,
     request,
     redirect,
     showErrorToast,

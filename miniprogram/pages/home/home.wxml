@@ -27,13 +27,13 @@
             <text class="num">{{orderNum}}   单</text>
             <text class="txt">订单数</text>
         </view>
-        <view class="inven invenRt">
+        <view   class="inven invenRt">
             <text class="num">{{ticketNum}}   张</text>
             <text class="txt">优惠券</text>
         </view>
     </view>
     <view class="menuBox">
-        <navigator class="list" wx:for="{{list}}" wx:key="item.id" url="{{item.path}}">
+        <navigator class="list" wx:for="{{list}}" wx:key="item.id"  bindtap="listBtn" data-id="{{item.id}}" url="{{item.path}}">
             <image class="pic" src="{{item.pic}}"/>
             <view class="txtBox">
                 <text class="title">{{item.title}}</text>

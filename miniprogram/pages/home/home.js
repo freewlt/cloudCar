@@ -10,17 +10,18 @@ Page({
     title:'首页',
     messageNum:'',
     bannerList:[
-      {pic:'http://www.xinhuanet.com/photo/2018-10/07/1123525197_15389079303861n.jpg'},
-      {pic:'http://desk-fd.zol-img.com.cn/g5/M00/06/0F/ChMkJ1Xv0ESINawwAAiuhK14OwIAACbiwCRYqoACK6c023.jpg'},
-      {pic:'http://img.mp.itc.cn/upload/20160525/0b081eece75c45c2b2b14ac97ef96e86_th.JPG'}
+      { pic:'https://app.ycl56.com/upload/banner01.png'},
+      { pic:'https://app.ycl56.com/upload/banner2.png'},
+      { pic:'https://app.ycl56.com/upload/banner3.png'}
     ],
     orderNum:'',
     ticketNum:'',
+    companyPhone:'',
     list:[
-      {title:'同城整车',slogn:'找车就是快！',pic:'../../images/zheng.png',path:'../mapSameVehicle/mapSameVehicle'},
-      {title:'寄件发货',slogn:'顺风车拼货更实惠！',pic:'../../images/pin.png',path:'../express/express'},
-      {title:'出行用车',slogn:'轻松找到私家车！',pic:'../../images/car.png',path:'../mapCityTravel/mapCityTravel'},
-      {title:'客服电话',slogn:'快速解决疑难问题！',pic:'../../images/service.png'},
+      {id:0,title:'同城整车',slogn:'找车就是快！',pic:'../../images/zheng.png',path:'../mapSameVehicle/mapSameVehicle'},
+      {id:1,title:'寄件发货',slogn:'顺风车拼货更实惠！',pic:'../../images/pin.png',path:'../express/express'},
+      {id:2,title:'出行用车',slogn:'轻松找到私家车！',pic:'../../images/car.png',path:'../mapCityTravel/mapCityTravel'},
+      {id:3,title:'客服电话',slogn:'快速解决疑难问题！',pic:'../../images/service.png'},
     ]
    },
   onLoad: function (){
@@ -34,12 +35,16 @@ Page({
         appId:appid,
         token:token,
       }).then(function (res) {
+        console.log(res)
         if (res.resultCode == 1) {
           _this.setData({
             messageNum: res.readState +'条',
             orderNum: res.msgcCount,
             ticketNum: res.settleCount,
+            companyPhone: res.companyPhone
           })
+          //保存在本地
+          wx.setStorageSync('companyPhone',res.companyPhone);     
         }else{
           wx.showToast({
             title: res.result,
@@ -49,8 +54,12 @@ Page({
         }
       });
    },
-
- 
+  //订单记录
+  getOrderLogs: function () {
+    wx.navigateTo({
+      url: '../orderRecord/orderRecord',
+    })
+  },
   //登录
   codeBtn:function(){
     wx.navigateTo({
@@ -62,5 +71,14 @@ Page({
     wx.navigateTo({
       url: '../sysMes/sysMes',
     })
-  }
+  },
+  //拨打电话
+  listBtn: function (e) {
+    if (e.currentTarget.dataset.id == 3) {
+     var  companyphone= this.data.companyPhone;
+      wx.makePhoneCall({
+        phoneNumber:companyphone //仅为示例，并非真实的电话号码
+      })
+    }
+  },
  })

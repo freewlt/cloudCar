@@ -15,7 +15,7 @@
                 <view class="iconBox">
                     <image src='{{codePic}}' class="iconPic"></image>
                 </view>
-                <input class="codeInput" placeholder='验证码' placeholder-class="phcolor" value='{{code}}' bindinput='getCodeValue'></input>
+                <input class="codeInput"  type="number" placeholder='验证码' placeholder-class="phcolor" value='{{code}}' bindinput='getCodeValue'></input>
                 <button class="getCode" bindtap="getVerificationCode" disabled='{{disabled}}' >{{codename}}</button>
             </view>
         </view>

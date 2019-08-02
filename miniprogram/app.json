@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/login/login",
-    "pages/index/index",
     "pages/home/home",
     "pages/sysMes/sysMes",
     "pages/generalize/generalize",
@@ -16,6 +15,7 @@
     "pages/detailList/detailList",
     "pages/addressList/addressList",
     "pages/addressAdd/addressAdd",
+    "pages/addressEdit/addressEdit",
     "pages/detailListAdd/detailListAdd",
     "pages/balance/balance",
     "pages/handle/handle",
@@ -35,6 +35,11 @@
     "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
@@ -43,6 +48,7 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
+  
   "tabBar": {
     "color": "#9B9B9B",
     "selectedColor": "#086ee0",
@@ -61,4 +67,5 @@
       }
     ]
   }
+  
 }

@@ -11,19 +11,39 @@ Page({
     detail:'',
     balance:'',
     count:'',
+    companyPhone:'',
     list:[
-      {title:'推广二维码',pic:'../../images/WX.png',path:'../generalize/generalize'},
-      {title:'一键客服',pic:'../../images/personService.png',path:''},
+      {id:1,title:'推广二维码',pic:'../../images/WX.png',path:'../generalize/generalize'},
+      {id:2,title:'一键客服',pic:'../../images/personService.png',path:''},
     ]
    },
   onLoad: function (){
     var _this = this;
+    console.log("12");
+    wx.getUserInfo({
+      success: function (res) {
+        console.log("12" + userInfo.nickName);
+        var userInfo = res.userInfo
+        var nickName = userInfo.nickName
+        var avatarUrl = userInfo.avatarUrl
+        var gender = userInfo.gender //性别 0：未知、1：男、2：女
+        var province = userInfo.province
+        var city = userInfo.city
+        var country = userInfo.country
+        console.log("nickName:" + nickName + ",avatarUrl:" + avatarUrl + ",gender" + gender)
+          _this.setData({
+            wxHead: avatarUrl,
+            nickname:nickName,
+          });
+        
+      }
+    });
     var TIME = util.formatTime(new Date());
     var userDetail = wx.getStorageSync('userDetail')
     var appid=app.globalData.appid;
     var userId=userDetail.id;
     var token=userDetail.token;
-    this.setData({
+    _this.setData({
       time: TIME,
       wxHead:app.globalData.avatarUrl,
       nickname:app.globalData.nickName
@@ -40,6 +60,8 @@ Page({
           detail:res.linkPhone,
           balance:res.balance,
           count:res.count,
+          nickname:res.companyName,
+          companyPhone:res.companyPhone,
         })
         // 隐藏加载框
         wx.hideLoading();
@@ -57,6 +79,14 @@ Page({
       wx.navigateTo({
         url:'../personalData/personalData'
       })
-   }
- 
+   },
+  //拨打电话
+  listBtn: function (e) {
+    if (e.currentTarget.dataset.id == 2) {
+      var companyphone = wx.getStorageSync('companyPhone');
+      wx.makePhoneCall({
+        phoneNumber: companyphone //仅为示例，并非真实的电话号码
+      })
+    }
+  },
  })

@@ -1,8 +1,8 @@
 
-const API_BASE_URL = 'http://app.ycl56.com';
+const API_BASE_URL = 'https://app.ycl56.com';
 
 module.exports = {
-    getphoneMsg: API_BASE_URL +':8080/emc/user/getphoneMsg',//手机号
+  getphoneMsg: API_BASE_URL +'/emc/user/getphoneMsg',//手机号
     loginPhonecode: API_BASE_URL + '/yclmini/miniProgram/loginPhonecode',//登录
     getHomeInfo: API_BASE_URL +'/yclmini/miniProgram/getHomeInfo',//首页
     carTypeVehicleQuery: API_BASE_URL +'/yclmini/miniProgram/carTypeVehicleQuery',//同城整车
@@ -18,4 +18,5 @@ module.exports = {
     AddGoodsMenuSendingOrder: API_BASE_URL +'/yclmini/miniprogram/AddGoodsMenuSendingOrder',
     AddMenuGoodsOrder: API_BASE_URL +'/yclmini/MiniProgramGoodsOrder/AddMenuGoodsOrder',
     getInfoByCarid: API_BASE_URL +'/yclmini/MiniProgramPosition/getInfoByCarid',//车辆实时位置接口
+  getCarTypeById: API_BASE_URL + '/yclmini/miniProgram/getcarTypeVehicleById',//车辆实时位置接口
 };

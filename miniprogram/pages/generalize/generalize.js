@@ -9,12 +9,15 @@ Page({
   data: {
     title:'推广二维码',
     Member:'',
-    siji:'',
+    Siji:'',
    },
   onLoad: function (){
     this.fetachData();
-    this.createQrCode ('wxapp-qrcode', 'canvasMember', 110, 110)
-    this.createQrCode ('wxapp-qrcode', 'canvasSiji', 110, 110)
+    var _this = this;
+   // var member = _this.data.Member;
+   // var siji = _this.data.Siji;
+    //console.log(member+","+siji);
+   
    },
    fetachData:function(){
     var _this = this;
@@ -39,12 +42,15 @@ Page({
       if (res.resultCode == 1) {
         var companyId = res.companyId;
         var employeeIdNew = res.employeeId;
-        var memberCode = 'https://app.ycl56.com/emc/memberAppReg?employeeId='+employeeIdNew+"&companyId="+companyId;
-        var sijiCode ='https://app.ycl56.com/emc/dervierAppReg?employeeId='+employeeIdNew+"&companyId="+ companyId;
-        _this.setData({
-          Member:memberCode,
-          siji:sijiCode
-        })
+        var memberCode = 'https://app.ycl56.com/emc/memberAppReg?id='+employeeIdNew+"&companyId="+companyId;
+        var sijiCode ='https://app.ycl56.com/emc/dervierAppReg?id='+employeeIdNew+"&companyId="+ companyId;
+        _this.createQrCode(memberCode, 'canvasMember', 150, 150)
+        _this.createQrCode(sijiCode, 'canvasSiji', 150, 150)
+        console.log(memberCode + "," + sijiCode)
+       // _this.setData({
+         // Member:memberCode,
+         // Siji:sijiCode
+       // })
         wx.hideLoading();
       }else{
         wx.showToast({
@@ -72,7 +78,7 @@ Page({
           let sijiCode = _this.data.siji;
           console.log(memberCode);
           _this.setData({ 
-            siji:sijiCode,     
+            Siji:sijiCode,     
             Member:memberCode,  
           });
         },

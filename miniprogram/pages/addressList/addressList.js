@@ -70,6 +70,7 @@ Page({
     this.setData({
       time: TIME,
     });
+
     util.request(api.getPiecesAddress,{
       userId:userId,
       appId:appid,
@@ -209,11 +210,27 @@ Page({
     var _this = this;
     const id = this.data.currentTab;
     const deliveryInfoNew = _this.data.deliveryInfo.find((it) => it.id == id );
+
     var linkMan = deliveryInfoNew.linkMan;
     var linkPhone = deliveryInfoNew.linkPhone;
     var descAddress = deliveryInfoNew.descAddress;
+    var lat=deliveryInfoNew.lat;
+    var lon=deliveryInfoNew.lon;
     wx.navigateTo({
-      url: `../addressAdd/addressAdd?linkMan=${linkMan}&linkPhone=${linkPhone}&descAddress=${descAddress}&index=0`
+      url: `../addressEdit/addressEdit?id=${id}&linkMan=${linkMan}&linkPhone=${linkPhone}&descAddress=${descAddress}&lat=${lat}&lon=${lon}&index=0`
+    })
+  },
+  choise:function(){
+    var _this = this;
+    const id = this.data.currentTab;
+    const deliveryInfoNew = _this.data.deliveryInfo.find((it) => it.id == id );
+    var linkMan = deliveryInfoNew.linkMan;
+    var linkPhone = deliveryInfoNew.linkPhone;
+    var descAddress = deliveryInfoNew.descAddress;
+    var lat=deliveryInfoNew.lat;
+    var lon=deliveryInfoNew.lon;
+    wx.navigateTo({
+      url: `../express/express?id=${id}&linkMan=${linkMan}&linkPhone=${linkPhone}&descAddress=${descAddress}&lat=${lat}&lon=${lon}&index=0`
     })
   },
    //提交

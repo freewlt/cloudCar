@@ -6,22 +6,25 @@ import utilMd5 from '../../utils/md5.js';
 
 Page({
   data: {
-    title: '添加地址',
+    title: '修改地址',
     linkMan: '',
     linkPhone: '',
     descAddress: '',
     lat: '',
     lon: '',
+    id:''
   },
   onLoad: function (options) {
     var _this = this;
+    console.log(options.id+","+options.lat+","+options.lon);
     if(options.index==0){
       _this.setData({
         linkMan:options.linkMan,
         linkPhone:options.linkPhone,
         descAddress:options.descAddress,
         lat:options.lat,
-        lon:options.lon
+        lon:options.lon,
+        id:options.id
       })
     }
   },
@@ -86,12 +89,15 @@ Page({
     var descAddress = _this.data.descAddress;
     var lat = _this.data.lat;
     var lon = _this.data.lon;
-    util.request(api.addPiecesAddress, {
+    var id=_this.data.id;
+    console.log("id"+id+','+api.updatePiecesAddress);
+    util.request(api.updatePiecesAddress, {
       userId: userId,
       appId: appid,
       token: token,
       timeStamp: TIME,
       sign:utilMd5.hexMD5(token + appid + TIME),
+      id:id,
       linkMan: linkMan,
       linkPhone: linkPhone,
       descAddress: descAddress,
@@ -102,12 +108,12 @@ Page({
       //
         wx.showModal({
           title: '提示',
-          content: '添加成功,是否返回上页面',
+          content: '修改成功,是否返回上页面',
           success: function (e) {
             if (e.confirm) {
-              wx.navigateBack({
-                data:1,
-              })
+            wx.navigateBack({
+              data:1,
+            })
               console.log('用户点击确定')
             } else {
               console.log('用户点击取消')

@@ -4,10 +4,8 @@
   <map id="map" longitude="{{currentLo}}" latitude="{{currentLa}}" scale="{{scale}}" markers="{{markers}}" polyline="{{polyline}}"  include-points="{{includePoints}}" show-location style="width: 100%; height: 100%;"></map>
 </view>
 <view class="tui-search-bottom {{show ? '' : 'tui-hide'}}">
-  <view class="page-group">
-    <view class="page-nav-list {{statusType == 'car' ? 'active' : ''}}" data-type="car" bindtap="goTo">出行快车</view>
-    <view class="page-nav-list {{statusType == 'walk' ? 'active' : ''}}" data-type="walk" bindtap="goTo">出行专车</view>
-    <view class="page-nav-list {{statusType == 'ride' ? 'active' : ''}}" data-type="ride" bindtap="goTo">顺风车</view>
+ <view class="page-group">  
+    <view class="page-nav-list {{ currentTab == item.id ? 'active' : '' }}" wx:for="{{itemList}}" wx:key="{{carTypeIndex}}"  data-id="{{item.id}}" bindtap="goTo"> {{item.carType}}</view>
   </view>
   <view class="container">
     <form class="content" bindsubmit="formSubmit" bindreset="formReset">
@@ -38,18 +36,9 @@
                 wx:for="{{numList}}" wx:key="{{index}}">{{item}}</button>
             </view>
         </view>
-        <!-- <view class="listBox" bindchange="carTypeBtn">
-            <text class="titleName">用车类型</text>
-            <view class="detail">
-                <picker class="inputDetail"  bindchange="carTypeBtn" value="{{index}}" range="{{itemList}}">
-                   {{itemList[index]}}
-                </picker>
-                <image class="arrow" src="../../images/arrow.png"/>
-            </view>
-        </view> -->
         <view class="btnArea">
-            <button class="submit" form-type="submit">预约发单</button>
-            <button class="emergencyState {{ emergencycurrentTab == true ? 'emergencyStateRed' : '' }}" bindtap="emergencyBtn">{{emergency}}</button>
+            <button class="submit" form-type="submit">{{partAmountName}}</button>
+            <button class="emergencyState {{ emergencycurrentTab == true ? 'emergencyStateRed' : '' }}" bindtap="emergencyBtn">{{emergencyName}}</button>
         </view>
     </form>
 </view> 

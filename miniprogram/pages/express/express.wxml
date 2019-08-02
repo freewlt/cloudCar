@@ -55,7 +55,7 @@
             </view>
         </view>
         <view class="listBox seaBox">
-            <text class="titleName">付款方式</text>
+            <text class="titleName">结算周期</text>
             <view class="detail">
                 <button class="numList {{ currentTab == index ? 'numListSelect' : '' }}"  
                 bindtap="handleNumItem" id="{{index}}"

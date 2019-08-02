@@ -6,8 +6,8 @@ import utilMd5 from '../../utils/md5.js';
 
 Page({
   data: {
-    title: '同城速运',
-    itemList: ['kg', 'g', 't'],
+    title: '寄件发货',
+    itemList: ['kg','t'],
     time: '',
     currentTab: 0,
     index: 0,
@@ -21,15 +21,16 @@ Page({
     emergency:'紧急',
     emergencyState:0,
     memo:'',
-    date:'2021-01-01 12:38',
+    date:'',
     disabled:false,//设置是否能点击 false可以 true不能点击
     startDate:2019,
-    endDate:2023,
+    endDate:2029,
     choseTime:''
   },
   onLoad: function (options) {
     var _this = this;
     var TIME = util.formatTime(new Date());
+
     wx.getStorage({
       key: 'deliveryInfo',
       success: function (res) {
@@ -48,6 +49,7 @@ Page({
     })
     this.setData({
       time: TIME,
+      date:TIME,
     });
   },
   /**
@@ -164,6 +166,8 @@ Page({
     var token=userDetail.token;
     var parentId=userDetail.parentId;
     var createUserId=userDetail.createUserId;
+    var goodsHostName=userDetail.companyName;
+    console.log('2131'+goodsHostName)
     var linkMan = _this.data.deliveryInfo.linkMan;
     var linkPhone = _this.data.deliveryInfo.linkPhone;
     var startAddress = _this.data.deliveryInfo.descAddress;
@@ -173,14 +177,25 @@ Page({
     var endLinkPhone = _this.data.deliveryInfoShou.linkPhone;
     var endAddress = _this.data.deliveryInfoShou.descAddress;
     var dunWeight = _this.data.dunWeight;
+    
     var goodsName = _this.data.goodsName;
     var piece = _this.data.piece;
     var choseTime = _this.data.choseTime;
     var emergencyState = _this.data.emergencyState;
     var memo = _this.data.memo;
+    var payCycle =1;
+    if(_this.data.currentTab==0){
+      payCycle=1;
+    } else if (_this.data.currentTab==1){
+      payCycle=2;
+    }else if(_this.data.currentTab==2){
+      payCycle=3;
+    }
+    console.log("payCycle:" + payCycle);
     this.setData({
       time: TIME,
     });
+    //开始验证
     util.request(api.AddGoodsMenuSendingOrder,{
       userId:userId,
       appId:appid,
@@ -201,100 +216,38 @@ Page({
       companyUserId:createUserId,
       dunWeight:dunWeight,
       goodsName:goodsName,
-      // carTypeIds
+      goodsHostName:goodsHostName,
+      carTypeIds:36,
       // useCarType
-      // requestList
+      requestList:goodsHostName,
       orderType:'3',
+      payCycle: payCycle,
       amount:0,
       time:choseTime,
       piece:piece,
-      distance:200,
+      distance:0,
       emergencyState:emergencyState,
-      memo:memo
+      memo:memo,
+      requestList: memo,
     }).then(function (res) {
       if (res.resultCode == 1) {
-        if(startAddress == ""){
-          wx.showToast({
-            title: '起点地址不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(linkMan == ""){
-          wx.showToast({
-            title: '发货人不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(linkPhone == ""){
-          wx.showToast({
-            title: '发货人电话不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(endAddress == ""){
-          wx.showToast({
-            title: '终点地址不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(endLinkMan == ""){
-          wx.showToast({
-            title: '收货人不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(endLinkPhone == ""){
-          wx.showToast({
-            title: '收货人电话不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(dunWeight == ""){
-          wx.showToast({
-            title: '吨数不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(goodsName == ""){
-          wx.showToast({
-            title: '货物名称不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }
-        if(piece == ""){
-          wx.showToast({
-            title: '件数不能为空',
-            icon: 'none',
-            duration: 1000
-          })
-          return false;
-        }else{
-          wx.switchTab({
-            url: '../home/home',
-          })
-          wx.hideLoading();
-        }
-      }else{
-        wx.showToast({
-          title: res.result,
-          icon: 'none',
-          duration: 1000
+        //提示上传成功!
+        wx.showModal({
+          title: '提示:',
+          content: '下单成功！返回上一页面',
+          success:function(e){
+            if(e.confirm){
+              //清楚缓存
+              wx.setStorage({
+                key: 'deliveryInfo',
+                data: '',
+                key:'deliveryInfoShou',
+                data:''
+              })
+            }else{
+
+            }
+          }
         })
       }
     });

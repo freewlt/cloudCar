@@ -66,6 +66,9 @@ Page({
         app.globalData.nickName = companyName
         // 隐藏加载框
         wx.hideLoading();
+        wx.navigateBack({
+          delta: 1,
+        })
       }else{
         wx.showToast({
           title: res.result,

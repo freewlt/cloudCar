@@ -10,17 +10,23 @@ Page({
     logo:'../../images/logo.png',
     phonePic:'../../images/phone.png',
     codePic:'../../images/code.png',
-    code:'',
     iscode:null,
     codename:'获取',
     disabled:false,
-    phone:'13511074949',//手机号
+    phone:'',//手机号
     code:'',//验证码
     allValue:''
    },
   onLoad: function (){
-  },
+    var userDetail = wx.getStorageSync('userDetail');
+    if (userDetail.lenght>3){
+      wx.switchTab ({
+        url: '../home/home',
+      })
+    }else{
 
+    }
+  },
   //获取input输入框的值
   getPhoneValue:function(e){
     this.setData({
@@ -113,6 +119,7 @@ Page({
     }).then(function (res) {
       const key = 'userDetail'
       const data = res;
+      console.log(res)
       wx.setStorage({ key, data })
       if (res.resultCode == 1) {
           wx.switchTab ({

@@ -19,7 +19,15 @@
             <text class="num">{{balance}}</text>
             <image class="arrow" src="../../images/arrow.png"/>
         </navigator>
-        <navigator class="list" url="../orderRecord/orderRecord">
+       <!--  <navigator class="list" url="../orderRecord/orderRecord">
+            <image class="pic" src="../../images/order.png"/>
+            <view class="txtBox">
+                <text class="title">订单记录</text>
+            </view>
+            <text class="num">{{count}}</text>
+            <image class="arrow" src="../../images/arrow.png"/>
+        </navigator>-->
+        <navigator class="list">
             <image class="pic" src="../../images/order.png"/>
             <view class="txtBox">
                 <text class="title">订单记录</text>
@@ -27,7 +35,7 @@
             <text class="num">{{count}}</text>
             <image class="arrow" src="../../images/arrow.png"/>
         </navigator>
-        <navigator class="list" wx:for="{{list}}" wx:key="item.id" url="{{item.path}}">
+        <navigator class="list" wx:for="{{list}}" wx:key="item.id" bindtap="listBtn" data-id="{{item.id}}"  url="{{item.path}}">
             <image class="pic" src="{{item.pic}}"/>
             <view class="txtBox">
                 <text class="title">{{item.title}}</text>
